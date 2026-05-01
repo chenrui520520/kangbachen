@@ -26,7 +26,12 @@ KangBa Web3 game monorepo (in-progress).
    - `npm install`
 2. Compile contracts:
    - `npm run build`
-3. Run tests:
+3. Run static validation tests:
    - `npm test`
 
 > Note: current contracts are prototype-level and still need VRF integration, full synthesis burn/mint flow, and audit hardening before production deployment.
+
+
+## CI note
+
+Current environment may block scoped npm packages. The repo keeps a dependency-light test command (`node scripts/validate.js`) to allow baseline validation in restricted runners.
