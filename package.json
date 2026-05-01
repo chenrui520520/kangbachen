@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "build": "node scripts/validate.js",
-    "test": "node scripts/validate.js"
+    "test": "node scripts/validate.js && node scripts/validate-e2e-sim.js"
   }
 }
