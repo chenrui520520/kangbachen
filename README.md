@@ -35,3 +35,17 @@ KangBa Web3 game monorepo (in-progress).
 ## CI note
 
 Current environment may block scoped npm packages. The repo keeps a dependency-light test command (`node scripts/validate.js`) to allow baseline validation in restricted runners.
+
+
+## 项目搭建（可运行基础版）
+
+目录结构：
+- `contracts/`：链上合约原型
+- `apps/web/`：前端静态页面（暗黑风格Demo）
+- `services/api/`：Node原生API服务（含健康检查）
+- `scripts/`：验证与本地开发脚本
+
+运行：
+1. 启动服务：`npm run dev`
+2. 打开页面：`http://localhost:8787`
+3. 健康检查：`http://localhost:8787/api/health`
