@@ -49,3 +49,6 @@ Current environment may block scoped npm packages. The repo keeps a dependency-l
 1. 启动服务：`npm run dev`
 2. 打开页面：`http://localhost:8787`
 3. 健康检查：`http://localhost:8787/api/health`
+
+
+4. 自动打开页面：`npm run open`
