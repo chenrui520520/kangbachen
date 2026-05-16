@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "lore": "世界観",
+    "campaigns": "キャンペーン",
+    "tasks": "クエスト",
+    "rewards": "報酬",
+    "leaderboard": "ランキング",
+    "events": "イベント",
+    "shop": "ショップ",
+    "litepaper": "ライトペーパー",
+    "invite": "招待"
+  },
+  "home": {
+    "title": "KangBa の領域へ",
+    "subtitle": "クエスト、報酬、オンチェーンアイデンティティのためのダークファンタジーWeb3ハブ。",
+    "cta_docs": "ロードマップを読む"
+  },
+  "auth": {
+    "title": "KangBa にサインイン",
+    "subtitle": "ウォレット、メール、または X ログイン（準備中）。",
+    "signIn": "サインイン",
+    "signOut": "サインアウト",
+    "signedIn": "サインインしました",
+    "walletSection": "ウォレット",
+    "walletHint": "MetaMask、OKX、Coinbase、Rainbow、WalletConnect に対応。",
+    "connectWallet": "ウォレット接続",
+    "signWithWallet": "メッセージに署名して続行",
+    "signing": "署名中…",
+    "emailSection": "メール",
+    "emailLabel": "メールアドレス",
+    "sendCode": "認証コードを送信",
+    "sending": "送信中…",
+    "codeLabel": "6桁コード",
+    "verifyCode": "確認してサインイン",
+    "verifying": "確認中…",
+    "changeEmail": "別のメールを使用",
+    "emailCodeSent": "コードを送信しました（開発時はサーバーログを確認）",
+    "emailError": "メールログインに失敗しました",
+    "twitterSignIn": "X で続行",
+    "twitterHint": "OAuth は近日公開 — プレースホルダー",
+    "twitterPlaceholder": "X / Twitter ログインはまだ利用できません",
+    "twitterError": "Twitter ログインは利用できません",
+    "pointsLabel": "{points} ポイント"
+  },
+  "engagement": {
+    "signInRequired": "ログインが必要です",
+    "signInRequiredHint": "ウォレット接続またはメール認証で報酬を受け取れます。",
+    "signInCta": "ログイン",
+    "dailySignIn": "デイリー签到",
+    "streakDays": "{count}日連続",
+    "cycleDay": "30日周期の {day} 日目",
+    "todayReward": "本日の報酬",
+    "points": "ポイント",
+    "bonusNft": "ボーナス NFT: {name}",
+    "claimedToday": "本日受取済み",
+    "claiming": "受取中…",
+    "claimNow": "報酬を受け取る",
+    "claimSuccess": "+{points} ポイントを獲得！",
+    "claimFailed": "签到の受取に失敗",
+    "progress": "進捗",
+    "onCooldown": "クールダウン中",
+    "completed": "完了",
+    "claimReward": "報酬を受け取る",
+    "taskClaimed": "+{points} ポイント獲得！",
+    "taskFailed": "タスク受取失敗",
+    "leaderboard": "ランキング",
+    "lbPoints": "ポイント",
+    "lbStreak": "連続签到",
+    "lbNft": "NFT",
+    "yourRank": "あなたの順位: {rank}位 ({value})",
+    "eventsTitle": "イベント",
+    "eventActive": "開催中",
+    "eventUpcoming": "まもなく",
+    "eventEnded": "終了",
+    "multiplier": "報酬 {x} 倍",
+    "endsIn": "終了まで",
+    "startsIn": "開始まで",
+    "viewChronicle": "年代記へ →",
+    "shopTitle": "ショップ",
+    "shopSubtitle": "ポイントで仮想アイテムとモック NFT を交換。",
+    "shopEmpty": "商品がありません",
+    "redeem": "交換",
+    "outOfStock": "在庫切れ",
+    "purchaseSuccess": "{cost} ポイントで購入しました",
+    "purchaseFailed": "購入失敗",
+    "rewardsTitle": "報酬",
+    "rewardsSubtitle": "毎日签到し、タスクを完了して仮想資産を集めよう。",
+    "pointsBalance": "ポイント残高",
+    "streakLabel": "签到ストリーク",
+    "nftCollection": "NFT コレクション",
+    "recentActivity": "最近のアクティビティ",
+    "signInHistory": "签到履歴",
+    "typeLabel": "種別",
+    "amountLabel": "数量",
+    "whenLabel": "日時",
+    "cycleDayLabel": "日",
+    "tasksTitle": "タスク",
+    "tasksSubtitle": "デイリー・ソーシャル・イベントタスクでポイントとモック NFT を獲得。",
+    "leaderboardSubtitle": "トップ100 — 定期的に更新されます。",
+    "eventsSubtitle": "シーズンボーナスと期間限定倍率。"
+  },
+  "lore": {
+    "eyebrow": "禁書の年代記",
+    "title": "カンバ・ネクロポリス",
+    "subtitle": "死にゆくアンデッド文明 — 派閥、呪われた地域、最後の沈黙の予言。",
+    "timeline": "年表",
+    "characters": "人物",
+    "campaigns": "キャンペーン",
+    "factionsTitle": "アンデッド派閥",
+    "mapTitle": "灰の領域",
+    "timelineSubtitle": "初誓の破綻から最後の沈黙まで。",
+    "creaturesTitle": "ネクロポリスの生物",
+    "creaturesSubtitle": "魂税を守るレイス、レヴィアタン、霧の産み子。"
+  },
+  "landing": {
+    "meta": {
+      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
+    },
+    "hero": {
+      "badge": "静寂の時代 · ホロウキング",
+      "title": "KangBa",
+      "subtitle": "禁断のソウル経済で動く死にゆくアンデッド文明 — 魂税を払い、証人を縛り、呪われし遺物を手に入れよ。",
+      "ctaRewards": "ソウル・フラグメントを受け取る",
+      "ctaLore": "ネクロポリスへ",
+      "ctaInvite": "証人の魂を結ぶ",
+      "scroll": "降下"
+    },
+    "lore": {
+      "eyebrow": "禁書の年代記",
+      "title": "立ったまま死にゆく大陸",
+      "body": "カンバは倒れずネクロポリスとなった。リッチが記憶を徴収し、聖歌隊が深淵の響きを歌う。ブラックベイルが呪われし遺物を取引する。",
+      "cards": {
+        "0": { "title": "ソウル・フラグメント", "body": "ポイントは徴収された記憶 — ドミニオンの通貨。" },
+        "1": { "title": "呪われし遺物", "body": "剣・印・響きとして現れるモックNFT — エクスポートのみ、ミントなし。" },
+        "2": { "title": "最後の沈黙", "body": "全誓約者が深淵の響きを握ればカンバは終わる。" }
+      }
+    },
+    "factions": {
+      "eyebrow": "アンデッド派閥",
+      "title": "死にゆく玉座に誓え",
+      "subtitle": "文明の亡骸を分つ三勢力。ウォレットは印、ログインは誓い。",
+      "enter": "派閥へ",
+      "necropolis": { "name": "ネクロポリス・ドミニオン", "desc": "大理石の城でソウル・フラグメントを徴収するリッチの帝国。" },
+      "choir": { "name": "ホロウキングの聖歌隊", "desc": "生者を解く聖歌 — モーヴァインの沈黙の冠。" },
+      "blackveil": { "name": "ブラックベイル盟約", "desc": "霧の中で呪われし遺物を密輸する沼の契約者。" }
+    },
+    "creatures": {
+      "eyebrow": "遺物ティア",
+      "title": "禁断のモック遺物を集める",
+      "common": "ソウル・フラグメントの器",
+      "rare": "呪われし遺物の刃",
+      "epic": "ネクロティック・シジル",
+      "legendary": "深淵の響き"
+    },
+    "token": {
+      "mockBadge": "ソウル経済",
+      "title": "禁断のソウル経済",
+      "body": "ソウル・フラグメントとモック遺物は仮想 — 将来のエアドロップ用にエクスポート可能。この時代に実契約はない。",
+      "earn": {
+        "title": "Earn",
+        "body": "Sign in, tasks, events, and referrals."
+      },
+      "spend": {
+        "title": "Spend",
+        "body": "Redeem the shop for cosmetics and mock NFTs."
+      },
+      "airdrop": {
+        "title": "Airdrop-ready",
+        "body": "Admin exports back future on-chain distribution."
+      }
+    },
+    "gameplay": {
+      "title": "Gameplay loop",
+      "signin": {
+        "title": "Daily sign-in",
+        "body": "30-day cycle with escalating rewards."
+      },
+      "tasks": {
+        "title": "Quests",
+        "body": "Daily, social, and achievement tasks."
+      },
+      "events": {
+        "title": "Events",
+        "body": "Limited-time multipliers and milestones."
+      },
+      "rewards": {
+        "title": "Rewards",
+        "body": "Points, mock NFTs, and leaderboard glory."
+      }
+    },
+    "events": {
+      "eyebrow": "実況年代記",
+      "title": "キャンペーンと霧のイベント",
+      "body": "ホロウキングが目覚める。ブラックベイルの響きが魂税を倍増する。",
+      "cta": "キャンペーンを見る",
+      "featured": "覚醒",
+      "eventName": "ブラックベイルの下の響き",
+      "multiplier": "2× 魂税"
+    },
+    "leaderboard": {
+      "title": "Top champions",
+      "cta": "Full leaderboard"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "p1": {
+        "phase": "Phase I — Foundation",
+        "body": "Auth, points, sign-in, tasks."
+      },
+      "p2": {
+        "phase": "Phase II — Engagement",
+        "body": "Events, shop, leaderboards, NFT mock rewards."
+      },
+      "p3": {
+        "phase": "Phase III — Growth",
+        "body": "Referrals, cinematic landing, admin exports."
+      },
+      "p4": {
+        "phase": "Phase IV — On-chain",
+        "body": "Real contracts, minting, and token launch."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "q": "Is this on-chain?",
+        "a": "Not yet. All rewards are virtual and exportable for future airdrops."
+      },
+      "q2": {
+        "q": "How do I earn points?",
+        "a": "Daily sign-in, tasks, events, referrals, and shop refunds (admin)."
+      },
+      "q3": {
+        "q": "What are mock NFTs?",
+        "a": "Off-chain collectible records with rarity — no blockchain minting in this phase."
+      },
+      "q4": {
+        "q": "Can I invite friends?",
+        "a": "Yes. Share your invite code on the Invite page for bonus points."
+      }
+    },
+    "footer": {
+      "tagline": "Dark fantasy Web3 hub — built for immersion and long-term play.",
+      "tasks": "Tasks",
+      "rewards": "Rewards",
+      "invite": "Invite",
+      "shop": "Shop",
+      "legal": "© KangBa. Mock experience — not financial advice."
+    }
+  },
+  "referral": {
+    "title": "Invite allies",
+    "subtitle": "Share your code. Both you and your ally earn bonus points when they bind.",
+    "yourCode": "Your invite code",
+    "copyLink": "Copy invite link",
+    "copied": "Copied!",
+    "statsTitle": "Referral stats",
+    "referralCount": "Allies invited",
+    "rewardPoints": "Points from referrals",
+    "referredBy": "Invited by {name}",
+    "bindTitle": "Have a code?",
+    "bindPlaceholder": "ENTER-CODE",
+    "bindCta": "Bind code",
+    "bindSuccess": "Bound! +{points} points earned.",
+    "bindFailed": "Could not bind referral code"
+  }
+}

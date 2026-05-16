@@ -1,0 +1,278 @@
+{
+  "nav": {
+    "home": "首页",
+    "lore": "世界观",
+    "campaigns": "战役",
+    "tasks": "任务",
+    "rewards": "奖励",
+    "leaderboard": "排行榜",
+    "events": "活动",
+    "shop": "商城",
+    "litepaper": "白皮书",
+    "invite": "邀请"
+  },
+  "home": {
+    "title": "进入 KangBa 领域",
+    "subtitle": "暗黑幻想风 Web3 中枢：任务、奖励与链上身份，为沉浸与长线运营而生。",
+    "cta_docs": "查看路线图"
+  },
+  "auth": {
+    "title": "登录 KangBa",
+    "subtitle": "连接钱包、邮箱验证，或预留 X 登录入口。",
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "signedIn": "登录成功",
+    "walletSection": "钱包",
+    "walletHint": "支持 MetaMask、OKX、Coinbase、Rainbow 与 WalletConnect。",
+    "connectWallet": "连接钱包",
+    "signWithWallet": "签名消息以继续",
+    "signing": "签名中…",
+    "emailSection": "邮箱",
+    "emailLabel": "邮箱地址",
+    "sendCode": "发送验证码",
+    "sending": "发送中…",
+    "codeLabel": "6 位验证码",
+    "verifyCode": "验证并登录",
+    "verifying": "验证中…",
+    "changeEmail": "更换邮箱",
+    "emailCodeSent": "验证码已发送（开发环境请查看服务端日志）",
+    "emailError": "邮箱登录失败",
+    "twitterSignIn": "使用 X 继续",
+    "twitterHint": "OAuth 即将上线 — 当前为占位",
+    "twitterPlaceholder": "X / Twitter 登录尚未开放",
+    "twitterError": "Twitter 登录不可用",
+    "pointsLabel": "{points} 积分"
+  },
+  "engagement": {
+    "signInRequired": "请先登录",
+    "signInRequiredHint": "连接钱包或验证邮箱后即可领取奖励并同步进度。",
+    "signInCta": "登录",
+    "dailySignIn": "每日签到",
+    "streakDays": "连续 {count} 天",
+    "cycleDay": "周期第 {day} / 30 天",
+    "todayReward": "今日奖励",
+    "points": "积分",
+    "bonusNft": "额外 NFT：{name}",
+    "claimedToday": "今日已领取",
+    "claiming": "领取中…",
+    "claimNow": "立即领取",
+    "claimSuccess": "已领取 +{points} 积分！",
+    "claimFailed": "签到领取失败",
+    "progress": "进度",
+    "onCooldown": "冷却中",
+    "completed": "已完成",
+    "claimReward": "领取奖励",
+    "taskClaimed": "获得 +{points} 积分！",
+    "taskFailed": "任务领取失败",
+    "leaderboard": "排行榜",
+    "lbPoints": "积分",
+    "lbStreak": "连签",
+    "lbNft": "NFT",
+    "yourRank": "你的排名：第 {rank} 名（{value}）",
+    "eventsTitle": "活动",
+    "eventActive": "进行中",
+    "eventUpcoming": "即将开始",
+    "eventEnded": "已结束",
+    "multiplier": "{x} 倍奖励",
+    "endsIn": "剩余",
+    "startsIn": "距开始",
+    "viewChronicle": "进入纪事 →",
+    "shopTitle": "商城",
+    "shopSubtitle": "使用积分兑换虚拟道具与模拟 NFT。",
+    "shopEmpty": "暂无商品",
+    "redeem": "兑换",
+    "outOfStock": "已售罄",
+    "purchaseSuccess": "已花费 {cost} 积分兑换",
+    "purchaseFailed": "兑换失败",
+    "rewardsTitle": "奖励",
+    "rewardsSubtitle": "每日签到、完成任务，收集可导出的虚拟资产。",
+    "pointsBalance": "积分余额",
+    "streakLabel": "签到连击",
+    "nftCollection": "NFT 收藏",
+    "recentActivity": "最近动态",
+    "signInHistory": "签到记录",
+    "typeLabel": "类型",
+    "amountLabel": "数量",
+    "whenLabel": "时间",
+    "cycleDayLabel": "天数",
+    "tasksTitle": "任务",
+    "tasksSubtitle": "完成每日、社交与活动任务，获取积分与模拟 NFT。",
+    "leaderboardSubtitle": "前 100 名玩家 — 榜单定期更新。",
+    "eventsSubtitle": "空壳王觉醒与黑纱迷雾事件——限时加成。"
+  },
+  "lore": {
+    "eyebrow": "禁典",
+    "title": "康巴死灵都城",
+    "subtitle": "将亡不死文明——派系、诅咒之地与终末寂静预言。",
+    "timeline": "时间线",
+    "characters": "角色",
+    "campaigns": "战役",
+    "factionsTitle": "不死派系",
+    "mapTitle": "灰烬之境",
+    "timelineSubtitle": "从初誓破碎到终末寂静预言。",
+    "creaturesTitle": "死灵生物",
+    "creaturesSubtitle": "守卫魂税的幽影、骨利维坦与雾中孽种。"
+  },
+  "landing": {
+    "meta": {
+      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
+    },
+    "hero": {
+      "badge": "静滞纪元 · 空壳王",
+      "title": "KangBa",
+      "subtitle": "由禁术灵魂经济学驱动的将亡不死文明——缴纳魂税，束缚见证之魂，夺取诅咒遗物。",
+      "ctaRewards": "领取灵魂碎片",
+      "ctaLore": "进入死灵都城",
+      "ctaInvite": "束缚见证之魂",
+      "scroll": "下沉"
+    },
+    "lore": {
+      "eyebrow": "Worldview",
+      "title": "The shrouded continent of KangBa",
+      "body": "Three factions war beneath a blood moon. Your wallet is your sigil; your streak is your oath.",
+      "cards": {
+        "0": {
+          "title": "The Fracture",
+          "body": "An ancient rift spilled void energy across the realm."
+        },
+        "1": {
+          "title": "Relic Hunt",
+          "body": "Mock NFT relics record deeds for future on-chain claims."
+        },
+        "2": {
+          "title": "Seasonal Siege",
+          "body": "Limited events multiply rewards for all sworn players."
+        }
+      }
+    },
+    "factions": {
+      "eyebrow": "不死派系",
+      "title": "向将亡王座宣誓",
+      "subtitle": "三股势力分割文明的尸体。钱包即印记，签到即誓言。",
+      "enter": "进入派系",
+      "necropolis": { "name": "死灵都城邦", "desc": "在大理石城塞征收灵魂碎片的巫妖帝国。" },
+      "choir": { "name": "空壳王庭圣歌团", "desc": "瓦解生者的圣歌——莫尔文的寂静王冠。" },
+      "blackveil": { "name": "黑纱盟约", "desc": "穿越迷雾走私诅咒遗物的沼泽契约者。" }
+    },
+    "creatures": {
+      "eyebrow": "NFT Creatures",
+      "title": "Collect mock relics",
+      "common": "Scout familiars",
+      "rare": "Rift stalkers",
+      "epic": "Moon heralds",
+      "legendary": "Sovereign shades"
+    },
+    "token": {
+      "mockBadge": "Mock economy",
+      "title": "Token economy (preview)",
+      "body": "Points and relics are virtual today — exportable for future airdrops. No real contracts in this phase.",
+      "earn": {
+        "title": "Earn",
+        "body": "Sign in, tasks, events, and referrals."
+      },
+      "spend": {
+        "title": "Spend",
+        "body": "Redeem the shop for cosmetics and mock NFTs."
+      },
+      "airdrop": {
+        "title": "Airdrop-ready",
+        "body": "Admin exports back future on-chain distribution."
+      }
+    },
+    "gameplay": {
+      "title": "Gameplay loop",
+      "signin": {
+        "title": "Daily sign-in",
+        "body": "30-day cycle with escalating rewards."
+      },
+      "tasks": {
+        "title": "Quests",
+        "body": "Daily, social, and achievement tasks."
+      },
+      "events": {
+        "title": "Events",
+        "body": "Limited-time multipliers and milestones."
+      },
+      "rewards": {
+        "title": "Rewards",
+        "body": "Points, mock NFTs, and leaderboard glory."
+      }
+    },
+    "events": {
+      "eyebrow": "Live ops",
+      "title": "Seasonal events",
+      "body": "Join featured events for bonus multipliers and exclusive mock drops.",
+      "cta": "View events",
+      "featured": "Featured",
+      "eventName": "Blood Moon Siege",
+      "multiplier": "2× task points"
+    },
+    "leaderboard": {
+      "title": "Top champions",
+      "cta": "Full leaderboard"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "p1": {
+        "phase": "Phase I — Foundation",
+        "body": "Auth, points, sign-in, tasks."
+      },
+      "p2": {
+        "phase": "Phase II — Engagement",
+        "body": "Events, shop, leaderboards, NFT mock rewards."
+      },
+      "p3": {
+        "phase": "Phase III — Growth",
+        "body": "Referrals, cinematic landing, admin exports."
+      },
+      "p4": {
+        "phase": "Phase IV — On-chain",
+        "body": "Real contracts, minting, and token launch."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "q": "Is this on-chain?",
+        "a": "Not yet. All rewards are virtual and exportable for future airdrops."
+      },
+      "q2": {
+        "q": "How do I earn points?",
+        "a": "Daily sign-in, tasks, events, referrals, and shop refunds (admin)."
+      },
+      "q3": {
+        "q": "What are mock NFTs?",
+        "a": "Off-chain collectible records with rarity — no blockchain minting in this phase."
+      },
+      "q4": {
+        "q": "Can I invite friends?",
+        "a": "Yes. Share your invite code on the Invite page for bonus points."
+      }
+    },
+    "footer": {
+      "tagline": "Dark fantasy Web3 hub — built for immersion and long-term play.",
+      "tasks": "Tasks",
+      "rewards": "Rewards",
+      "invite": "Invite",
+      "shop": "Shop",
+      "legal": "© KangBa. Mock experience — not financial advice."
+    }
+  },
+  "referral": {
+    "title": "Invite allies",
+    "subtitle": "Share your code. Both you and your ally earn bonus points when they bind.",
+    "yourCode": "Your invite code",
+    "copyLink": "Copy invite link",
+    "copied": "Copied!",
+    "statsTitle": "Referral stats",
+    "referralCount": "Allies invited",
+    "rewardPoints": "Points from referrals",
+    "referredBy": "Invited by {name}",
+    "bindTitle": "Have a code?",
+    "bindPlaceholder": "ENTER-CODE",
+    "bindCta": "Bind code",
+    "bindSuccess": "Bound! +{points} points earned.",
+    "bindFailed": "Could not bind referral code"
+  }
+}

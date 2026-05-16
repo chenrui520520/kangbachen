@@ -1,54 +1,84 @@
-# kangba
+# KangBa
 
-KangBa Web3 game monorepo (in-progress).
+Monorepo for the KangBa Web3 game official site. Technical source of truth: [`PRDs/development.md`](PRDs/development.md).
 
-## Current status
+## Prerequisites
 
-- Product spec: `docs/kangba_项目方案_v1.0.md`
-- Smart contract prototype skeletons:
-  - `contracts/KangBaToken.sol`
-  - `contracts/SoulCardNFT.sol`
-  - `contracts/FurnaceCore.sol`
-  - `contracts/BloodCovenant.sol`
+- Node.js 22+
+- [pnpm](https://pnpm.io/) 9 (`corepack enable` then `corepack prepare pnpm@9.15.0 --activate`, or install pnpm globally)
+- Docker Desktop (for Postgres + Redis, and optional full stack)
 
-## Next milestones
+If your terminal cannot find `pnpm` or `npx`, ensure the Node.js install directory (for example `C:\\Program Files\\nodejs\\`) is on your `PATH`, then re-open the shell.
 
-1. Add Foundry/Hardhat project config and CI.
-2. Replace synthesis pseudo-random with Chainlink VRF.
-3. Implement full card burn/mint flow and stamina accounting.
-4. Add staking snapshot settlement for `BloodCovenant`.
-5. Build React frontend pages for Furnace/Inventory/PVP/PVE.
+## Quick start (stability-first default)
 
+1. Copy environment file and fill `NEXT_PUBLIC_WC_PROJECT_ID` for WalletConnect:
 
-## Local dev quickstart
+   ```bash
+   cp .env.example .env
+   ```
 
-1. Install dependencies:
-   - `npm install`
-2. Compile contracts:
-   - `npm run build`
-3. Run static validation tests:
-   - `npm test`
+2. Start **only** Postgres and Redis:
 
-> Note: current contracts are prototype-level and still need VRF integration, full synthesis burn/mint flow, and audit hardening before production deployment.
+   ```bash
+   docker compose up -d
+   ```
 
+3. Install dependencies and run database migrations:
 
-## CI note
+   ```bash
+   pnpm install
+   pnpm db:migrate
+   ```
 
-Current environment may block scoped npm packages. The repo keeps a dependency-light test command (`node scripts/validate.js`) to allow baseline validation in restricted runners.
+4. Run Next.js (`apps/web`) and Fastify (`server`) on the host:
 
+   ```bash
+   pnpm dev
+   ```
 
-## 项目搭建（可运行基础版）
+5. (Optional) Run the admin shell on port **3001**:
 
-目录结构：
-- `contracts/`：链上合约原型
-- `apps/web/`：前端静态页面（暗黑风格Demo）
-- `services/api/`：Node原生API服务（含健康检查）
-- `scripts/`：验证与本地开发脚本
+   ```bash
+   pnpm dev:admin
+   ```
 
-运行：
-1. 启动服务：`npm run dev`
-2. 打开页面：`http://localhost:8787`
-3. 健康检查：`http://localhost:8787/api/health`
+- Web: [http://localhost:3000](http://localhost:3000) (locale prefix, e.g. `/en`)
+- Admin: [http://localhost:3001/admin](http://localhost:3001/admin) (note the `basePath`)
+- API: [http://127.0.0.1:4000/health](http://127.0.0.1:4000/health)
+- Next health proxy: [http://localhost:3000/api/health](http://localhost:3000/api/health)
 
+## Full stack (Docker: web + api + postgres + redis)
 
-4. 自动打开页面：`npm run open`
+Used for production-like checks and CI:
+
+```bash
+docker compose -f docker-compose.full.yml up --build
+```
+
+- `migrate` runs once, `api` becomes healthy before `web` starts, and both `api` / `web` have Docker healthchecks.
+
+## Workspace layout
+
+| Path | Role |
+|------|------|
+| `apps/web` | Public Next.js 15 site |
+| `apps/admin` | Admin shell (Next.js) |
+| `server` | Fastify API + Prisma |
+| `packages/*` | Shared config, types, utils, ui |
+| `storage/` | Local media and exports (mounted into API in full compose) |
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Run web + API in parallel |
+| `pnpm dev:admin` | Run admin (`basePath=/admin`) on port 3001 |
+| `pnpm db:migrate` | Prisma migrate (dev workflow) |
+| `pnpm --filter api prisma:generate` | `prisma generate` (e.g. after schema changes) |
+| `pnpm build` | Build all packages that define `build` |
+
+## Notes
+
+- **WalletConnect** uses Reown (WalletConnect Cloud) for relay; this is not end-user auth (JWT/email/X remain self-hosted per PRD). Configure `NEXT_PUBLIC_WC_PROJECT_ID` locally.
+- **shadcn/ui** is initialized under `apps/web`; use the shadcn CLI to add components (do not use deprecated `shadcn-ui` npm package from older docs).

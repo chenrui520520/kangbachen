@@ -1,0 +1,98 @@
+﻿{
+    "timestamp":  "2026-05-16T10:48:14.8963700Z",
+    "environment":  {
+                        "api":  "http://127.0.0.1:4000",
+                        "web":  "http://127.0.0.1:3000",
+                        "docker":  "postgres+redis up"
+                    },
+    "qaExitCode":  0,
+    "user":  {
+                 "email":  "poweruser@kangba.local",
+                 "id":  "cmp87rq58000inht0rhnl59w7",
+                 "points":  1305
+             },
+    "tasks":  [
+                  {
+                      "completed":  true,
+                      "progress":  7,
+                      "canClaim":  false,
+                      "name":  "Seven Oaths of Ash",
+                      "id":  "task-streak-7"
+                  },
+                  {
+                      "completed":  false,
+                      "progress":  0,
+                      "canClaim":  false,
+                      "name":  "Soul Tithe",
+                      "id":  "task-daily-login"
+                  },
+                  {
+                      "completed":  false,
+                      "progress":  0,
+                      "canClaim":  false,
+                      "name":  "Witness the Rite",
+                      "id":  "task-watch-trailer"
+                  },
+                  {
+                      "completed":  false,
+                      "progress":  0,
+                      "canClaim":  false,
+                      "name":  "Fogbound Participant",
+                      "id":  "task-event-participant"
+                  },
+                  {
+                      "completed":  false,
+                      "progress":  0,
+                      "canClaim":  false,
+                      "name":  "Spread the Prophecy",
+                      "id":  "task-share-x"
+                  }
+              ],
+    "event":  {
+                  "tasks":  4,
+                  "progress":  [
+                                   {
+                                       "taskId":  "evt-task-hollow-witness-hymn-en",
+                                       "progress":  2,
+                                       "completed":  true
+                                   },
+                                   {
+                                       "taskId":  "evt-task-hollow-pay-tithe-en",
+                                       "progress":  2,
+                                       "completed":  true
+                                   },
+                                   {
+                                       "taskId":  "evt-task-hollow-bind-witness-en",
+                                       "progress":  2,
+                                       "completed":  true
+                                   },
+                                   {
+                                       "taskId":  "evt-task-hollow-claim-relic-en",
+                                       "progress":  2,
+                                       "completed":  true
+                                   }
+                               ],
+                  "slug":  "hollow-king-awakening"
+              },
+    "campaign":  {
+                     "progress":  [
+
+                                  ],
+                     "slug":  "hollow-king-awakening",
+                     "quests":  0
+                 },
+    "profile":  {
+                    "nfts":  2,
+                    "points":  1305,
+                    "badges":  1
+                },
+    "community":  {
+                      "badges":  1,
+                      "tier":  "initiate"
+                  },
+    "localePages":  "25/25 OK (en zh ko ja ar x 5 paths)",
+    "warnings":  [
+                     "signin/claim may return 400 if already claimed today",
+                     "tasks/complete may return 400 if already completed or on cooldown"
+                 ]
+}

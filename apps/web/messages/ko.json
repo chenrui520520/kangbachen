@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "home": "홈",
+    "lore": "세계관",
+    "campaigns": "캠페인",
+    "tasks": "퀘스트",
+    "rewards": "보상",
+    "leaderboard": "리더보드",
+    "events": "이벤트",
+    "shop": "상점",
+    "litepaper": "백서",
+    "invite": "초대"
+  },
+  "home": {
+    "title": "KangBa 영역으로",
+    "subtitle": "퀘스트, 보상, 온체인 정체성을 위한 다크 판타지 Web3 허브입니다.",
+    "cta_docs": "로드맵 보기"
+  },
+  "auth": {
+    "title": "KangBa 로그인",
+    "subtitle": "지갑 연결, 이메일 또는 X 로그인(예정).",
+    "signIn": "로그인",
+    "signOut": "로그아웃",
+    "signedIn": "로그인되었습니다",
+    "walletSection": "지갑",
+    "walletHint": "MetaMask, OKX, Coinbase, Rainbow, WalletConnect 지원.",
+    "connectWallet": "지갑 연결",
+    "signWithWallet": "메시지 서명 후 계속",
+    "signing": "서명 중…",
+    "emailSection": "이메일",
+    "emailLabel": "이메일 주소",
+    "sendCode": "인증 코드 보내기",
+    "sending": "전송 중…",
+    "codeLabel": "6자리 코드",
+    "verifyCode": "확인 후 로그인",
+    "verifying": "확인 중…",
+    "changeEmail": "다른 이메일 사용",
+    "emailCodeSent": "코드가 전송되었습니다(개발 환경은 서버 로그 확인)",
+    "emailError": "이메일 로그인 실패",
+    "twitterSignIn": "X로 계속",
+    "twitterHint": "OAuth 준비 중 — 플레이스홀더",
+    "twitterPlaceholder": "X / Twitter 로그인은 아직 사용할 수 없습니다",
+    "twitterError": "Twitter 로그인 불가",
+    "pointsLabel": "{points} 포인트"
+  },
+  "engagement": {
+    "signInRequired": "로그인이 필요합니다",
+    "signInRequiredHint": "지갑 연결 또는 이메일 인증 후 보상을 받을 수 있습니다.",
+    "signInCta": "로그인",
+    "dailySignIn": "일일 출석",
+    "streakDays": "{count}일 연속",
+    "cycleDay": "30일 중 {day}일차",
+    "todayReward": "오늘의 보상",
+    "points": "포인트",
+    "bonusNft": "보너스 NFT: {name}",
+    "claimedToday": "오늘 수령 완료",
+    "claiming": "수령 중…",
+    "claimNow": "보상 받기",
+    "claimSuccess": "+{points} 포인트를 받았습니다!",
+    "claimFailed": "출석 수령 실패",
+    "progress": "진행도",
+    "onCooldown": "쿨다운",
+    "completed": "완료",
+    "claimReward": "보상 받기",
+    "taskClaimed": "+{points} 포인트 획득!",
+    "taskFailed": "임무 수령 실패",
+    "leaderboard": "리더보드",
+    "lbPoints": "포인트",
+    "lbStreak": "연속 출석",
+    "lbNft": "NFT",
+    "yourRank": "내 순위: {rank}위 ({value})",
+    "eventsTitle": "이벤트",
+    "eventActive": "진행 중",
+    "eventUpcoming": "예정",
+    "eventEnded": "종료",
+    "multiplier": "{x}배 보상",
+    "endsIn": "종료까지",
+    "startsIn": "시작까지",
+    "viewChronicle": "연대기 입장 →",
+    "shopTitle": "상점",
+    "shopSubtitle": "포인트로 가상 아이템과 모의 NFT를 교환하세요.",
+    "shopEmpty": "상품이 없습니다",
+    "redeem": "교환",
+    "outOfStock": "품절",
+    "purchaseSuccess": "{cost} 포인트로 구매했습니다",
+    "purchaseFailed": "구매 실패",
+    "rewardsTitle": "보상",
+    "rewardsSubtitle": "매일 출석하고 임무를 완료해 가상 자산을 모으세요.",
+    "pointsBalance": "포인트 잔액",
+    "streakLabel": "출석 연속",
+    "nftCollection": "NFT 컬렉션",
+    "recentActivity": "최근 활동",
+    "signInHistory": "출석 기록",
+    "typeLabel": "유형",
+    "amountLabel": "수량",
+    "whenLabel": "시간",
+    "cycleDayLabel": "일차",
+    "tasksTitle": "임무",
+    "tasksSubtitle": "일일·소셜·이벤트 임무로 포인트와 모의 NFT를 획득하세요.",
+    "leaderboardSubtitle": "상위 100명 — 주기적으로 갱신됩니다.",
+    "eventsSubtitle": "시즌 보너스와 기간 한정 배율."
+  },
+  "lore": {
+    "eyebrow": "금서 연대기",
+    "title": "캉바 네크로폴리스",
+    "subtitle": "죽어가는 언데드 문명 — 파벌, 저주받은 지역, 마지막 침묵의 예언.",
+    "timeline": "연대기",
+    "characters": "인물",
+    "campaigns": "캠페인",
+    "factionsTitle": "언데드 파벌",
+    "mapTitle": "재의 영역",
+    "timelineSubtitle": "첫 서약의 파괴부터 마지막 침묵까지.",
+    "creaturesTitle": "네크로폴리스의 생물",
+    "creaturesSubtitle": "영혼세를 거두는 망령, 레비아탄, 안개의 산란."
+  },
+  "landing": {
+    "meta": {
+      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
+    },
+    "hero": {
+      "badge": "정적의 시대 · 공허 왕",
+      "title": "KangBa",
+      "subtitle": "금지된 영혼 경제로 유지되는 죽어가는 언데드 문명 — 영혼세를 내고, 증인을 묶고, 저주받은 유물을 차지하라.",
+      "ctaRewards": "영혼 파편 수령",
+      "ctaLore": "네크로폴리스 입장",
+      "ctaInvite": "증인의 영혼 결속",
+      "scroll": "하강"
+    },
+    "lore": {
+      "eyebrow": "금서 연대기",
+      "title": "서서히 죽는 대륙",
+      "body": "캉바는 무너지지 않고 네크로폴리스가 되었다. 리치가 기억을 징수하고, 성가대는 심연의 메아리를 부른다. 블랙베일은 저주받은 유물을 거래한다.",
+      "cards": {
+        "0": { "title": "영혼 파편", "body": "포인트는 징수된 기억 — 도미니언의 화폐." },
+        "1": { "title": "저주받은 유물", "body": "검, 인장, 메아리로 나타나는 모의 NFT —보내기만, 민팅 없음." },
+        "2": { "title": "마지막 침묵", "body": "모든 맹세자가 심연의 메아리를 쥐면 캉바는 끝난다." }
+      }
+    },
+    "factions": {
+      "eyebrow": "언데드 파벌",
+      "title": "죽어가는 왕좌에 맹세",
+      "subtitle": "문명의 시체를 나눈 세 세력. 지갑이 인장, 출석이 맹세다.",
+      "enter": "파벌 입장",
+      "necropolis": { "name": "네크로폴리스 도미니언", "desc": "대리석 성채에서 영혼 파편을 거두는 리치 제국." },
+      "choir": { "name": "공허 왕의 성가대", "desc": "생자를 해체하는 성가 — 모르베인의 침묵 왕관." },
+      "blackveil": { "name": "블랙베일 서약", "desc": "안개 속에서 저주받은 유물을 밀수하는 늪의 계약자." }
+    },
+    "creatures": {
+      "eyebrow": "유물 등급",
+      "title": "금지된 모의 유물 수집",
+      "common": "영혼 파편 용기",
+      "rare": "저주받은 유물 검",
+      "epic": "사령 인장",
+      "legendary": "심연의 메아리"
+    },
+    "token": {
+      "mockBadge": "영혼 경제",
+      "title": "금지된 영혼 경제",
+      "body": "영혼 파편과 모의 유물은 가상이며 미래 에어드롭용으로 보낼 수 있습니다. 이 시대에는 실제 계약이 없습니다.",
+      "earn": {
+        "title": "Earn",
+        "body": "Sign in, tasks, events, and referrals."
+      },
+      "spend": {
+        "title": "Spend",
+        "body": "Redeem the shop for cosmetics and mock NFTs."
+      },
+      "airdrop": {
+        "title": "Airdrop-ready",
+        "body": "Admin exports back future on-chain distribution."
+      }
+    },
+    "gameplay": {
+      "title": "Gameplay loop",
+      "signin": {
+        "title": "Daily sign-in",
+        "body": "30-day cycle with escalating rewards."
+      },
+      "tasks": {
+        "title": "Quests",
+        "body": "Daily, social, and achievement tasks."
+      },
+      "events": {
+        "title": "Events",
+        "body": "Limited-time multipliers and milestones."
+      },
+      "rewards": {
+        "title": "Rewards",
+        "body": "Points, mock NFTs, and leaderboard glory."
+      }
+    },
+    "events": {
+      "eyebrow": "실시간 연대기",
+      "title": "캠페인 & 안개 이벤트",
+      "body": "공허 왕이 깨어난다. 블랙베일의 메아리가 영혼세를 배가한다.",
+      "cta": "캠페인 보기",
+      "featured": "각성",
+      "eventName": "블랙베일 아래의 메아리",
+      "multiplier": "2× 영혼세"
+    },
+    "leaderboard": {
+      "title": "Top champions",
+      "cta": "Full leaderboard"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "p1": {
+        "phase": "Phase I — Foundation",
+        "body": "Auth, points, sign-in, tasks."
+      },
+      "p2": {
+        "phase": "Phase II — Engagement",
+        "body": "Events, shop, leaderboards, NFT mock rewards."
+      },
+      "p3": {
+        "phase": "Phase III — Growth",
+        "body": "Referrals, cinematic landing, admin exports."
+      },
+      "p4": {
+        "phase": "Phase IV — On-chain",
+        "body": "Real contracts, minting, and token launch."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "q": "Is this on-chain?",
+        "a": "Not yet. All rewards are virtual and exportable for future airdrops."
+      },
+      "q2": {
+        "q": "How do I earn points?",
+        "a": "Daily sign-in, tasks, events, referrals, and shop refunds (admin)."
+      },
+      "q3": {
+        "q": "What are mock NFTs?",
+        "a": "Off-chain collectible records with rarity — no blockchain minting in this phase."
+      },
+      "q4": {
+        "q": "Can I invite friends?",
+        "a": "Yes. Share your invite code on the Invite page for bonus points."
+      }
+    },
+    "footer": {
+      "tagline": "Dark fantasy Web3 hub — built for immersion and long-term play.",
+      "tasks": "Tasks",
+      "rewards": "Rewards",
+      "invite": "Invite",
+      "shop": "Shop",
+      "legal": "© KangBa. Mock experience — not financial advice."
+    }
+  },
+  "referral": {
+    "title": "Invite allies",
+    "subtitle": "Share your code. Both you and your ally earn bonus points when they bind.",
+    "yourCode": "Your invite code",
+    "copyLink": "Copy invite link",
+    "copied": "Copied!",
+    "statsTitle": "Referral stats",
+    "referralCount": "Allies invited",
+    "rewardPoints": "Points from referrals",
+    "referredBy": "Invited by {name}",
+    "bindTitle": "Have a code?",
+    "bindPlaceholder": "ENTER-CODE",
+    "bindCta": "Bind code",
+    "bindSuccess": "Bound! +{points} points earned.",
+    "bindFailed": "Could not bind referral code"
+  }
+}

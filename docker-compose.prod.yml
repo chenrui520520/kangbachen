@@ -1,0 +1,133 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-kangba}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d kangba"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kangba
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - kangba
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.server
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4000
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/kangba?schema=public
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    networks:
+      - kangba
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      API_INTERNAL_URL: http://api:4000
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 20s
+      timeout: 8s
+      retries: 5
+      start_period: 60s
+    networks:
+      - kangba
+
+  admin:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.admin
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api:4000}
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 20s
+      timeout: 8s
+      retries: 5
+      start_period: 60s
+    networks:
+      - kangba
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "/docker-entrypoint.sh"]
+    environment:
+      SSL_REDIRECT: ${SSL_REDIRECT:-0}
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./docker/nginx-entrypoint.sh:/docker-entrypoint.sh:ro
+      - ./docker/nginx.http-only.conf:/etc/nginx/templates/http-only.conf:ro
+      - ./docker/nginx.prod.conf:/etc/nginx/templates/dual.conf:ro
+      - ./docker/nginx.ssl-redirect.conf:/etc/nginx/templates/ssl-redirect.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./storage:/var/www/storage:ro
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+      admin:
+        condition: service_healthy
+    networks:
+      - kangba
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  kangba:
+    driver: bridge

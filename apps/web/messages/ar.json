@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "lore": "الأساطير",
+    "campaigns": "الحملات",
+    "tasks": "المهام",
+    "rewards": "المكافآت",
+    "leaderboard": "المتصدرين",
+    "events": "الفعاليات",
+    "shop": "المتجر",
+    "litepaper": "الورقة البيضاء",
+    "invite": "دعوة"
+  },
+  "home": {
+    "title": "ادخل عالم KangBa",
+    "subtitle": "مركز Web3 بأسلوب فانتازيا مظلم للمهمات والمكافآت والهوية على السلسلة.",
+    "cta_docs": "اقرأ خارطة الطريق"
+  },
+  "auth": {
+    "title": "تسجيل الدخول إلى KangBa",
+    "subtitle": "اربط محفظتك أو البريد أو انتظر تسجيل X.",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "signedIn": "تم تسجيل الدخول",
+    "walletSection": "المحفظة",
+    "walletHint": "يدعم MetaMask وOKX وCoinbase وRainbow وWalletConnect.",
+    "connectWallet": "ربط المحفظة",
+    "signWithWallet": "وقّع الرسالة للمتابعة",
+    "signing": "جاري التوقيع…",
+    "emailSection": "البريد",
+    "emailLabel": "البريد الإلكتروني",
+    "sendCode": "إرسال رمز التحقق",
+    "sending": "جاري الإرسال…",
+    "codeLabel": "رمز من 6 أرقام",
+    "verifyCode": "تحقق وسجّل الدخول",
+    "verifying": "جاري التحقق…",
+    "changeEmail": "استخدام بريد آخر",
+    "emailCodeSent": "تم إرسال الرمز (راجع سجلات الخادم في التطوير)",
+    "emailError": "فشل تسجيل الدخول بالبريد",
+    "twitterSignIn": "المتابعة مع X",
+    "twitterHint": "OAuth قريباً — عنصر نائب",
+    "twitterPlaceholder": "تسجيل X / Twitter غير متاح بعد",
+    "twitterError": "تسجيل Twitter غير متاح",
+    "pointsLabel": "{points} نقطة"
+  },
+  "engagement": {
+    "signInRequired": "يلزم تسجيل الدخول",
+    "signInRequiredHint": "اربط محفظتك أو تحقق من بريدك الإلكتروني لاستلام المكافآت.",
+    "signInCta": "تسجيل الدخول",
+    "dailySignIn": "تسجيل يومي",
+    "streakDays": "سلسلة {count} أيام",
+    "cycleDay": "اليوم {day} من 30",
+    "todayReward": "مكافأة اليوم",
+    "points": "نقاط",
+    "bonusNft": "NFT إضافي: {name}",
+    "claimedToday": "تم الاستلام اليوم",
+    "claiming": "جارٍ الاستلام…",
+    "claimNow": "استلام المكافأة",
+    "claimSuccess": "تم استلام +{points} نقطة!",
+    "claimFailed": "فشل تسجيل الحضور",
+    "progress": "التقدم",
+    "onCooldown": "في فترة انتظار",
+    "completed": "مكتمل",
+    "claimReward": "استلام المكافأة",
+    "taskClaimed": "+{points} نقطة!",
+    "taskFailed": "فشل المهمة",
+    "leaderboard": "لوحة المتصدرين",
+    "lbPoints": "النقاط",
+    "lbStreak": "السلسلة",
+    "lbNft": "NFT",
+    "yourRank": "ترتيبك: #{rank} ({value})",
+    "eventsTitle": "الفعاليات",
+    "eventActive": "نشط",
+    "eventUpcoming": "قريباً",
+    "eventEnded": "انتهى",
+    "multiplier": "مكافآت ×{x}",
+    "endsIn": "ينتهي خلال",
+    "startsIn": "يبدأ خلال",
+    "viewChronicle": "ادخل السجل →",
+    "shopTitle": "المتجر",
+    "shopSubtitle": "استبدل النقاط بعناصر افتراضية وNFT تجريبية.",
+    "shopEmpty": "لا توجد منتجات",
+    "redeem": "استبدال",
+    "outOfStock": "نفد المخزون",
+    "purchaseSuccess": "تم الشراء مقابل {cost} نقطة",
+    "purchaseFailed": "فشل الشراء",
+    "rewardsTitle": "المكافآت",
+    "rewardsSubtitle": "سجّل حضورك يومياً وأكمل المهام لجمع أصول افتراضية.",
+    "pointsBalance": "رصيد النقاط",
+    "streakLabel": "سلسلة الحضور",
+    "nftCollection": "مجموعة NFT",
+    "recentActivity": "النشاط الأخير",
+    "signInHistory": "سجل الحضور",
+    "typeLabel": "النوع",
+    "amountLabel": "المبلغ",
+    "whenLabel": "الوقت",
+    "cycleDayLabel": "اليوم",
+    "tasksTitle": "المهام",
+    "tasksSubtitle": "اكسب نقاطاً وNFT تجريبية من المهام اليومية والاجتماعية.",
+    "leaderboardSubtitle": "أفضل 100 لاعب — يتم التحديث دورياً.",
+    "eventsSubtitle": "مكافآت موسمية ومضاعفات محدودة."
+  },
+  "lore": {
+    "eyebrow": "السجل المحرّم",
+    "title": "نيكروبوليس كانغبا",
+    "subtitle": "حضارة أموات أحياء محتضرة — فصائل، مناطق ملعونة، نبوءة الصمت الأخير.",
+    "timeline": "الجدول الزمني",
+    "characters": "الشخصيات",
+    "campaigns": "الحملات",
+    "factionsTitle": "فصائل الأموات",
+    "mapTitle": "أرض الرماد",
+    "timelineSubtitle": "من القسم الأول إلى نبوءة الصمت الأخير.",
+    "creaturesTitle": "مخلوقات النيكروبوليس",
+    "creaturesSubtitle": "أشباح وليفياثانات وضباب يحرسون الأرواح المُقتطعة."
+  },
+  "landing": {
+    "meta": {
+      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
+    },
+    "hero": {
+      "badge": "عصر السكون · الملك الأجوف",
+      "title": "KangBa",
+      "subtitle": "حضارة أموات أحياء يقودها اقتصاد الأرواح المحرّم — ادفع الضريبة، اربط الشهود، واحصل على الآثار الملعونة.",
+      "ctaRewards": "استلم شظايا الأرواح",
+      "ctaLore": "ادخل النيكروبوليس",
+      "ctaInvite": "اربط أرواح الشهود",
+      "scroll": "انزل"
+    },
+    "lore": {
+      "eyebrow": "السجل المحرّم",
+      "title": "القارة التي ماتت واقفة",
+      "body": "لم تسقط كانغبا — أصبحت نيكروبوليس. الليتش يقتطعون الذكريات. الكاتدرائيات تغني أصداء الهاوية. الحجاب الأسود يتاجر بالآثار الملعونة.",
+      "cards": {
+        "0": { "title": "شظايا الأرواح", "body": "النقاط ذكريات مُقتطعة — عملة الهيمنة." },
+        "1": { "title": "آثار ملعونة", "body": "NFT وهمية كسيوف وخواتم وأصداء — قابلة للتصدير دون سك على السلسلة." },
+        "2": { "title": "الصمت الأخير", "body": "تنتهي كانغبا عندما يحمل كل لاعب قسمًا صدى الهاوية." }
+      }
+    },
+    "factions": {
+      "eyebrow": "فصائل الأموات",
+      "title": "احلف لعرش محتضر",
+      "subtitle": "ثلاث قوى تقسم جثة حضارة. محفظتك ختمك؛ تسجيلك دخولك قسمك.",
+      "enter": "ادخل الفصيل",
+      "necropolis": { "name": "هيمنة نيكروبوليس", "desc": "إمبراطورية ليتش تجمع شظايا الأرواح في قلاع رخامية." },
+      "choir": { "name": "جوقة الملك الأجوف", "desc": "تراتيل تفكك الأحياء — تاج صمت مورفين." },
+      "blackveil": { "name": "عهد الحجاب الأسود", "desc": "عارضو عقود يسوّقون الآثار الملعونة عبر الضباب." }
+    },
+    "creatures": {
+      "eyebrow": "طبقات الآثار",
+      "title": "اجمع الآثار الوهمية المحرّمة",
+      "common": "أوعية شظايا الأرواح",
+      "rare": "نصال الآثار الملعونة",
+      "epic": "أختام نيكروتية",
+      "legendary": "أصداء الهاوية"
+    },
+    "token": {
+      "mockBadge": "اقتصاد الأرواح",
+      "title": "اقتصاد الأرواح المحرّم",
+      "body": "شظايا الأرواح والآثار الوهمية افتراضية — قابلة للتصدير لبرامج مستقبلية. لا عقود حقيقية في عصر السكون.",
+      "earn": {
+        "title": "Earn",
+        "body": "Sign in, tasks, events, and referrals."
+      },
+      "spend": {
+        "title": "Spend",
+        "body": "Redeem the shop for cosmetics and mock NFTs."
+      },
+      "airdrop": {
+        "title": "Airdrop-ready",
+        "body": "Admin exports back future on-chain distribution."
+      }
+    },
+    "gameplay": {
+      "title": "Gameplay loop",
+      "signin": {
+        "title": "Daily sign-in",
+        "body": "30-day cycle with escalating rewards."
+      },
+      "tasks": {
+        "title": "Quests",
+        "body": "Daily, social, and achievement tasks."
+      },
+      "events": {
+        "title": "Events",
+        "body": "Limited-time multipliers and milestones."
+      },
+      "rewards": {
+        "title": "Rewards",
+        "body": "Points, mock NFTs, and leaderboard glory."
+      }
+    },
+    "events": {
+      "eyebrow": "سجلات حية",
+      "title": "حملات وأحداث الضباب",
+      "body": "الملك الأجوف يستيقظ. أصداء الحجاب الأسود تضاعف ضريبة الأرواح.",
+      "cta": "عرض الحملات",
+      "featured": "اليقظة",
+      "eventName": "أصداء تحت الحجاب الأسود",
+      "multiplier": "2× ضريبة الأرواح"
+    },
+    "leaderboard": {
+      "title": "Top champions",
+      "cta": "Full leaderboard"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "p1": {
+        "phase": "Phase I — Foundation",
+        "body": "Auth, points, sign-in, tasks."
+      },
+      "p2": {
+        "phase": "Phase II — Engagement",
+        "body": "Events, shop, leaderboards, NFT mock rewards."
+      },
+      "p3": {
+        "phase": "Phase III — Growth",
+        "body": "Referrals, cinematic landing, admin exports."
+      },
+      "p4": {
+        "phase": "Phase IV — On-chain",
+        "body": "Real contracts, minting, and token launch."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "q": "Is this on-chain?",
+        "a": "Not yet. All rewards are virtual and exportable for future airdrops."
+      },
+      "q2": {
+        "q": "How do I earn points?",
+        "a": "Daily sign-in, tasks, events, referrals, and shop refunds (admin)."
+      },
+      "q3": {
+        "q": "What are mock NFTs?",
+        "a": "Off-chain collectible records with rarity — no blockchain minting in this phase."
+      },
+      "q4": {
+        "q": "Can I invite friends?",
+        "a": "Yes. Share your invite code on the Invite page for bonus points."
+      }
+    },
+    "footer": {
+      "tagline": "Dark fantasy Web3 hub — built for immersion and long-term play.",
+      "tasks": "Tasks",
+      "rewards": "Rewards",
+      "invite": "Invite",
+      "shop": "Shop",
+      "legal": "© KangBa. Mock experience — not financial advice."
+    }
+  },
+  "referral": {
+    "title": "Invite allies",
+    "subtitle": "Share your code. Both you and your ally earn bonus points when they bind.",
+    "yourCode": "Your invite code",
+    "copyLink": "Copy invite link",
+    "copied": "Copied!",
+    "statsTitle": "Referral stats",
+    "referralCount": "Allies invited",
+    "rewardPoints": "Points from referrals",
+    "referredBy": "Invited by {name}",
+    "bindTitle": "Have a code?",
+    "bindPlaceholder": "ENTER-CODE",
+    "bindCta": "Bind code",
+    "bindSuccess": "Bound! +{points} points earned.",
+    "bindFailed": "Could not bind referral code"
+  }
+}

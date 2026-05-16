@@ -1,12 +1,25 @@
 {
   "name": "kangba",
-  "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "kill-port": "^2.0.1"
+  },
   "scripts": {
-    "build": "node scripts/validate.js",
-    "test": "node scripts/validate.js && node scripts/validate-e2e-sim.js",
-    "dev": "node scripts/dev.js",
-    "start": "node services/api/server.js",
-    "open": "node scripts/open.js"
+    "predev": "node scripts/kill-dev-ports.mjs",
+    "dev": "pnpm --parallel --filter web --filter api run dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:admin": "pnpm --filter admin dev",
+    "dev:server": "pnpm --filter api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "db:migrate": "pnpm --filter api prisma:migrate",
+    "db:seed": "pnpm --filter api db:seed",
+    "qa:power": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1",
+    "qa:power:api": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1 -ApiOnly",
+    "qa:power:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1 -Prod"
   }
 }

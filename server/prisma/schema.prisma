@@ -1,0 +1,825 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String              @id @default(cuid())
+  email              String?             @unique
+  username           String?
+  twitterId          String?             @unique
+  avatarUrl          String?
+  language           String              @default("en")
+  points             Int                 @default(0)
+  signInStreak       Int                 @default(0)
+  signInCycleDay     Int                 @default(0)
+  lastSignInDate     DateTime?           @db.Date
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  deletedAt          DateTime?
+  walletAccounts     WalletAccount[]
+  sessions           UserSession[]
+  signInHistory      UserSignInHistory[]
+  dailyClaims        UserDailyClaim[]
+  pointsTransactions PointsTransaction[]
+  userNfts           UserNFT[]
+  userTasks          UserTask[]
+  recommendations    Recommendation[]
+  leaderboardRows    LeaderboardEntry[]
+  shopPurchases      UserShopPurchase[]
+  shopOrders         ShopOrder[]
+  eventProgress      UserEventProgress[]
+  referralCode       ReferralCode?
+  referralsMade      ReferralRelation[]  @relation("Referrer")
+  referredBy         ReferralRelation?   @relation("Referred")
+  referralRewards    ReferralReward[]
+  userBadges         UserBadge[]
+  communityProfile   UserCommunityProfile?
+  campaignProgress   UserCampaignProgress[]
+  eventTaskProgress  UserEventTaskProgress[]
+
+  @@index([createdAt])
+  @@index([deletedAt])
+}
+
+model ReferralCode {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  code      String   @unique
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([code])
+}
+
+model ReferralRelation {
+  id         String   @id @default(cuid())
+  referrerId String
+  referredId String   @unique
+  code       String
+  createdAt  DateTime @default(now())
+  referrer   User     @relation("Referrer", fields: [referrerId], references: [id], onDelete: Cascade)
+  referred   User     @relation("Referred", fields: [referredId], references: [id], onDelete: Cascade)
+  rewards    ReferralReward[]
+
+  @@index([referrerId])
+  @@index([code])
+}
+
+model ReferralReward {
+  id           String            @id @default(cuid())
+  userId       String
+  relationId   String?
+  rewardPoints Int
+  type         String
+  createdAt    DateTime          @default(now())
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  relation     ReferralRelation? @relation(fields: [relationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([type])
+}
+
+/// On-chain wallet linked to a user (table: Wallet)
+model WalletAccount {
+  id        String   @id @default(cuid())
+  userId    String
+  address   String
+  chainId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([address, chainId])
+  @@index([userId])
+  @@map("Wallet")
+}
+
+model UserSession {
+  id           String    @id @default(cuid())
+  userId       String
+  refreshToken String    @unique
+  expiresAt    DateTime
+  userAgent    String?
+  ipAddress    String?
+  revokedAt    DateTime?
+  createdAt    DateTime  @default(now())
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model AuthNonce {
+  id        String    @id @default(cuid())
+  address   String
+  chainId   Int
+  nonce     String    @unique
+  message   String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([address, chainId])
+  @@index([expiresAt])
+}
+
+model EmailVerificationCode {
+  id        String    @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([email])
+  @@index([expiresAt])
+}
+
+model SignInRewardConfig {
+  day          Int       @id
+  rewardPoints Int       @default(0)
+  nftRewardId  String?
+  nftReward    NFTReward? @relation(fields: [nftRewardId], references: [id], onDelete: SetNull)
+  updatedAt    DateTime  @updatedAt
+}
+
+/// Historical sign-in records (table: SignInRecord)
+model UserSignInHistory {
+  id            String   @id @default(cuid())
+  userId        String
+  signInDate    DateTime @db.Date
+  rewardDay     Int
+  rewardPoints  Int      @default(0)
+  rewardNftId   String?
+  createdAt     DateTime @default(now())
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, signInDate])
+  @@index([userId])
+  @@map("SignInRecord")
+}
+
+model UserDailyClaim {
+  id           String    @id @default(cuid())
+  userId       String
+  claimDate    DateTime  @db.Date
+  cycleDay     Int
+  rewardPoints Int       @default(0)
+  nftRewardId  String?
+  createdAt    DateTime  @default(now())
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nftReward    NFTReward? @relation(fields: [nftRewardId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, claimDate])
+  @@index([userId])
+}
+
+model PointsTransaction {
+  id        String   @id @default(cuid())
+  userId    String
+  amount    Int
+  type      String
+  reference String?
+  note      String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([type])
+}
+
+model NFTReward {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  rarity      String
+  imageUrl    String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  signInDays  SignInRewardConfig[]
+  userNfts    UserNFT[]
+  tasks       Task[]
+  shopItems   ShopItem[]
+  eventRewards EventReward[]
+  eventTasks   EventTask[]
+  dailyClaims UserDailyClaim[]
+
+  @@index([rarity])
+}
+
+model UserNFT {
+  id          String   @id @default(cuid())
+  userId      String
+  nftRewardId String
+  source      String
+  acquiredAt  DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nftReward   NFTReward @relation(fields: [nftRewardId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([nftRewardId])
+}
+
+model Task {
+  id              String     @id @default(cuid())
+  name            String
+  description     String?
+  type            String
+  category        String     @default("DAILY")
+  rewardPoints    Int        @default(0)
+  rewardNftId     String?
+  repeatable      Boolean    @default(false)
+  cooldownHours   Int?
+  targetProgress  Int        @default(1)
+  active          Boolean    @default(true)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  rewardNft       NFTReward? @relation(fields: [rewardNftId], references: [id], onDelete: SetNull)
+  userTasks       UserTask[]
+
+  @@index([type])
+  @@index([category])
+  @@index([createdAt])
+}
+
+model UserTask {
+  id              String    @id @default(cuid())
+  userId          String
+  taskId          String
+  progress        Int       @default(0)
+  completed       Boolean   @default(false)
+  completedAt     DateTime?
+  lastCompletedAt DateTime?
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task            Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+  @@index([userId])
+}
+
+model Recommendation {
+  id              String   @id @default(cuid())
+  userId          String
+  recommendedItem String
+  type            String
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model LeaderboardEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  value     Int      @default(0)
+  rank      Int?
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, type])
+  @@index([type, value])
+  @@index([userId])
+}
+
+model Event {
+  id           String                  @id @default(cuid())
+  slug         String
+  locale       String                  @default("en")
+  name         String
+  description  String?
+  startsAt     DateTime
+  endsAt       DateTime
+  multiplier   Float                   @default(1)
+  bannerUrl    String?
+  featured     Boolean                 @default(false)
+  config       Json?
+  active       Boolean                 @default(true)
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  rewards      EventReward[]
+  tasks        EventTask[]
+  userProgress UserEventProgress[]
+  taskProgress UserEventTaskProgress[]
+
+  @@unique([slug, locale])
+  @@index([startsAt, endsAt])
+  @@index([active])
+}
+
+model EventTask {
+  id             String                  @id @default(cuid())
+  eventId        String
+  stepOrder      Int                     @default(1)
+  title          String
+  description    String?                 @db.Text
+  taskKey        String
+  targetProgress Int                     @default(1)
+  rewardPoints   Int                     @default(0)
+  rewardNftId    String?
+  event          Event                   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  nftReward      NFTReward?              @relation(fields: [rewardNftId], references: [id], onDelete: SetNull)
+  progress       UserEventTaskProgress[]
+
+  @@index([eventId, stepOrder])
+}
+
+model UserEventTaskProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  eventId     String
+  taskId      String
+  progress    Int       @default(0)
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event       Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  task        EventTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+  @@index([userId, eventId])
+}
+
+model EventReward {
+  id           String    @id @default(cuid())
+  eventId      String
+  rewardPoints Int       @default(0)
+  nftRewardId  String?
+  milestone    Int       @default(1)
+  event        Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  nftReward    NFTReward? @relation(fields: [nftRewardId], references: [id], onDelete: SetNull)
+
+  @@index([eventId])
+}
+
+model UserEventProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String
+  progress  Int      @default(0)
+  claimed   Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([userId])
+}
+
+model ShopItem {
+  id            String             @id @default(cuid())
+  name          String
+  description   String?
+  type          String
+  costPoints    Int
+  rewardNftId   String?
+  eventSlug     String?
+  stock         Int                @default(0)
+  availableFrom DateTime?
+  availableTo   DateTime?
+  active        Boolean            @default(true)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  rewardNft     NFTReward?         @relation(fields: [rewardNftId], references: [id], onDelete: SetNull)
+  purchases     UserShopPurchase[]
+  orders        ShopOrder[]
+
+  @@index([type])
+  @@index([eventSlug])
+  @@index([createdAt])
+}
+
+model ShopOrder {
+  id         String   @id @default(cuid())
+  userId     String
+  shopItemId String
+  costPoints Int
+  status     String   @default("completed")
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  shopItem   ShopItem @relation(fields: [shopItemId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model UserShopPurchase {
+  id          String   @id @default(cuid())
+  userId      String
+  shopItemId  String
+  purchasedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  shopItem    ShopItem @relation(fields: [shopItemId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// --- Phase 5: CMS ---
+
+model CmsPage {
+  id              String    @id @default(cuid())
+  slug            String
+  locale          String    @default("en")
+  title           String
+  body            String    @db.Text
+  seoTitle        String?
+  seoDescription  String?
+  published       Boolean   @default(false)
+  publishedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model CmsPost {
+  id              String    @id @default(cuid())
+  slug            String
+  locale          String    @default("en")
+  title           String
+  excerpt         String?
+  body            String    @db.Text
+  coverImageUrl   String?
+  seoTitle        String?
+  seoDescription  String?
+  published       Boolean   @default(false)
+  publishedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model CmsBanner {
+  id          String    @id @default(cuid())
+  locale      String    @default("en")
+  title       String
+  subtitle    String?
+  imageUrl    String?
+  linkUrl     String?
+  sortOrder   Int       @default(0)
+  active      Boolean   @default(true)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([locale, active])
+}
+
+model CmsFaq {
+  id        String   @id @default(cuid())
+  locale    String   @default("en")
+  question  String
+  answer    String   @db.Text
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([locale, published])
+}
+
+model CmsAnnouncement {
+  id        String    @id @default(cuid())
+  locale    String    @default("en")
+  message   String
+  linkUrl   String?
+  active    Boolean   @default(true)
+  startsAt  DateTime?
+  endsAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([locale, active])
+}
+
+// --- Phase 5: Analytics ---
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  eventType String
+  userId    String?
+  sessionId String?
+  path      String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([eventType, createdAt])
+  @@index([userId, createdAt])
+  @@index([createdAt])
+}
+
+model DailyStats {
+  date              DateTime @id @db.Date
+  dau               Int      @default(0)
+  signIns           Int      @default(0)
+  taskCompletions   Int      @default(0)
+  referralBinds     Int      @default(0)
+  rewardClaims      Int      @default(0)
+  shopPurchases     Int      @default(0)
+  pageViews         Int      @default(0)
+  uniqueVisitors    Int      @default(0)
+  updatedAt         DateTime @updatedAt
+}
+
+// --- Phase 5: Admin RBAC ---
+
+model AdminUser {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  passwordHash String
+  role         String     @default("EDITOR")
+  active       Boolean    @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+
+  @@index([role])
+}
+
+model AuditLog {
+  id          String     @id @default(cuid())
+  adminUserId String?
+  action      String
+  resource    String
+  resourceId  String?
+  metadata    Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime   @default(now())
+  adminUser   AdminUser? @relation(fields: [adminUserId], references: [id], onDelete: SetNull)
+
+  @@index([adminUserId, createdAt])
+  @@index([action, createdAt])
+  @@index([createdAt])
+}
+
+// --- Phase 6: Lore ecosystem ---
+
+model LoreFaction {
+  id          String          @id @default(cuid())
+  slug        String
+  locale      String          @default("en")
+  name        String
+  tagline     String?
+  body        String          @db.Text
+  imageUrl    String?
+  colorTheme  String          @default("violet")
+  motto       String?
+  published   Boolean         @default(false)
+  sortOrder   Int             @default(0)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  characters  LoreCharacter[]
+  regions     LoreRegion[]
+  artifacts   LoreArtifact[]
+  timeline    LoreTimeline[]
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model LoreRegion {
+  id          String          @id @default(cuid())
+  slug        String
+  locale      String          @default("en")
+  name        String
+  body        String          @db.Text
+  imageUrl    String?
+  mapX        Float           @default(50)
+  mapY        Float           @default(50)
+  factionId   String?
+  published   Boolean         @default(false)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  faction     LoreFaction?    @relation(fields: [factionId], references: [id], onDelete: SetNull)
+  characters  LoreCharacter[]
+  creatures   LoreCreature[]
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model LoreCharacter {
+  id          String       @id @default(cuid())
+  slug        String
+  locale      String       @default("en")
+  name        String
+  title       String?
+  body        String       @db.Text
+  imageUrl    String?
+  rarity      String       @default("common")
+  factionId   String?
+  regionId    String?
+  published   Boolean      @default(false)
+  metadata    Json?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  faction     LoreFaction? @relation(fields: [factionId], references: [id], onDelete: SetNull)
+  region      LoreRegion?  @relation(fields: [regionId], references: [id], onDelete: SetNull)
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+  @@index([factionId])
+}
+
+model LoreCreature {
+  id        String      @id @default(cuid())
+  slug      String
+  locale    String      @default("en")
+  name      String
+  body      String      @db.Text
+  imageUrl  String?
+  rarity    String      @default("common")
+  regionId  String?
+  published Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  region    LoreRegion? @relation(fields: [regionId], references: [id], onDelete: SetNull)
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model LoreArtifact {
+  id        String       @id @default(cuid())
+  slug      String
+  locale    String       @default("en")
+  name      String
+  body      String       @db.Text
+  imageUrl  String?
+  rarity    String       @default("rare")
+  factionId String?
+  published Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  faction   LoreFaction? @relation(fields: [factionId], references: [id], onDelete: SetNull)
+
+  @@unique([slug, locale])
+  @@index([published, locale])
+}
+
+model LoreTimeline {
+  id        String       @id @default(cuid())
+  slug      String
+  locale    String       @default("en")
+  title     String
+  body      String       @db.Text
+  era       String?
+  yearLabel String?
+  sortOrder Int          @default(0)
+  factionId String?
+  published Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  faction   LoreFaction? @relation(fields: [factionId], references: [id], onDelete: SetNull)
+
+  @@unique([slug, locale])
+  @@index([published, locale, sortOrder])
+}
+
+model CommunityRole {
+  id            String                 @id @default(cuid())
+  key           String                 @unique
+  name          String
+  description   String?
+  minReputation Int                    @default(0)
+  profiles      UserCommunityProfile[]
+}
+
+model AlphaPass {
+  id          String                 @id @default(cuid())
+  key         String                 @unique
+  name        String
+  description String?
+  profiles    UserCommunityProfile[]
+}
+
+model InviteTier {
+  id           String @id @default(cuid())
+  key          String @unique
+  name         String
+  minReferrals Int    @default(0)
+  sortOrder    Int    @default(0)
+}
+
+model Badge {
+  id          String      @id @default(cuid())
+  key         String      @unique
+  name        String
+  description String?
+  rarity      String      @default("common")
+  imageUrl    String?
+  frameStyle  String?
+  userBadges  UserBadge[]
+}
+
+model UserBadge {
+  id        String   @id @default(cuid())
+  userId    String
+  badgeId   String
+  source    String   @default("SYSTEM")
+  grantedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge     Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model UserCommunityProfile {
+  id            String         @id @default(cuid())
+  userId        String         @unique
+  roleId        String?
+  alphaPassId   String?
+  reputation    Int            @default(0)
+  inviteTierKey String         @default("initiate")
+  title         String?
+  updatedAt     DateTime       @updatedAt
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role          CommunityRole? @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  alphaPass     AlphaPass?     @relation(fields: [alphaPassId], references: [id], onDelete: SetNull)
+}
+
+model Campaign {
+  id          String                 @id @default(cuid())
+  slug        String
+  locale      String                 @default("en")
+  name        String
+  description String?                @db.Text
+  narrative   String?                @db.Text
+  bannerUrl   String?
+  startsAt    DateTime
+  endsAt      DateTime
+  active      Boolean                @default(true)
+  featured    Boolean                @default(false)
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @updatedAt
+  quests      CampaignQuest[]
+  progress    UserCampaignProgress[]
+
+  @@unique([slug, locale])
+  @@index([active, startsAt, endsAt])
+}
+
+model CampaignQuest {
+  id             String                 @id @default(cuid())
+  campaignId     String
+  stepOrder      Int                    @default(1)
+  title          String
+  description    String?                @db.Text
+  taskKey        String
+  targetProgress Int                    @default(1)
+  rewardPoints   Int                    @default(0)
+  parentQuestId  String?
+  branchKey      String?
+  campaign       Campaign               @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  progress       UserCampaignProgress[]
+
+  @@index([campaignId, stepOrder])
+}
+
+model UserCampaignProgress {
+  id          String        @id @default(cuid())
+  userId      String
+  campaignId  String
+  questId     String
+  progress    Int           @default(0)
+  completed   Boolean       @default(false)
+  completedAt DateTime?
+  updatedAt   DateTime      @updatedAt
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  campaign    Campaign      @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  quest       CampaignQuest @relation(fields: [questId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questId])
+  @@index([userId, campaignId])
+}
+
+model DocArticle {
+  id              String   @id @default(cuid())
+  slug            String
+  category        String
+  locale          String   @default("en")
+  title           String
+  body            String   @db.Text
+  version         Int      @default(1)
+  seoTitle        String?
+  seoDescription  String?
+  published       Boolean  @default(false)
+  sortOrder       Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([slug, locale, category])
+  @@index([category, locale, published])
+}
