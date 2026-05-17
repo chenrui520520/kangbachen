@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { PublicProfile } from "@kangba/types";
-import { cn } from "@kangba/ui";
+import type { PublicProfile } from "@kenba/types";
+import { cn } from "@kenba/ui";
 import { ProfileShare } from "./profile-share";
 
 const frameByRarity: Record<string, string> = {

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@kangba/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 import { DashboardCharts } from "@/components/dashboard-charts";
 

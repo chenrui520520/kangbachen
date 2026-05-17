@@ -8,17 +8,16 @@
     "leaderboard": "Leaderboard",
     "events": "Events",
     "shop": "Shop",
-    "litepaper": "Litepaper",
     "invite": "Invite"
   },
   "home": {
-    "title": "Enter the KangBa realm",
+    "title": "Enter the KENBA realm",
     "subtitle": "A dark-fantasy Web3 hub for quests, rewards, and on-chain identity — built for immersion and long-term play.",
     "cta_docs": "Read the roadmap"
   },
   "auth": {
-    "title": "Sign in to KangBa",
-    "subtitle": "Connect your wallet, use email, or prepare for X login.",
+    "title": "Sign in to KENBA",
+    "subtitle": "Connect your wallet, or sign in with Google (email) or X in one click.",
     "signIn": "Sign in",
     "signOut": "Sign out",
     "signedIn": "Signed in successfully",
@@ -28,24 +27,19 @@
     "signWithWallet": "Sign message to continue",
     "signing": "Signing…",
     "emailSection": "Email",
-    "emailLabel": "Email address",
-    "sendCode": "Send verification code",
-    "sending": "Sending…",
-    "codeLabel": "6-digit code",
-    "verifyCode": "Verify & sign in",
-    "verifying": "Verifying…",
-    "changeEmail": "Use a different email",
-    "emailCodeSent": "Check your email (or server logs in dev)",
-    "emailError": "Email sign-in failed",
+    "emailSignIn": "Continue with Email",
+    "emailHint": "Redirect to Google to sign in with your email account — no verification code.",
+    "emailNotConfigured": "Email login is not configured (GOOGLE_CLIENT_ID on server)",
     "twitterSignIn": "Continue with X",
-    "twitterHint": "OAuth coming soon — placeholder only",
-    "twitterPlaceholder": "X / Twitter login is not available yet",
-    "twitterError": "Twitter sign-in unavailable",
+    "twitterHint": "Redirect to X to authorize your account.",
+    "twitterNotConfigured": "X login is not configured (TWITTER_CLIENT_ID on server)",
+    "oauthCompleting": "Completing sign-in…",
+    "oauthError": "Authorization failed. Please try again.",
     "pointsLabel": "{points} points"
   },
   "engagement": {
     "signInRequired": "Sign in to continue",
-    "signInRequiredHint": "Connect your wallet or verify email to claim rewards and track progress.",
+    "signInRequiredHint": "Connect your wallet or sign in with Google / X to claim rewards and track progress.",
     "signInCta": "Sign in",
     "dailySignIn": "Daily sign-in",
     "streakDays": "{count} day streak",
@@ -102,7 +96,7 @@
   },
   "lore": {
     "eyebrow": "Forbidden Chronicle",
-    "title": "Necropolis of KangBa",
+    "title": "Necropolis of KENBA",
     "subtitle": "A dying undead civilization — factions, cursed regions, and the prophecy of Final Silence.",
     "timeline": "Timeline",
     "characters": "Characters",
@@ -115,12 +109,12 @@
   },
   "landing": {
     "meta": {
-      "title": "KangBa — Dying Undead Civilization",
+      "title": "KENBA — Dying Undead Civilization",
       "description": "Enter a gothic soul economy: soul fragments, cursed relics, necrotic sigils, and Abyssal Echoes. Local-first Web3 engagement."
     },
     "hero": {
       "badge": "Age of Stillness · Hollow King",
-      "title": "KangBa",
+      "title": "KENBA",
       "subtitle": "A dying undead civilization powered by forbidden soul economics — pay the tithe, bind witness souls, claim cursed relics.",
       "ctaRewards": "Claim soul fragments",
       "ctaLore": "Enter the necropolis",
@@ -130,11 +124,11 @@
     "lore": {
       "eyebrow": "Forbidden Chronicle",
       "title": "The continent that died standing",
-      "body": "KangBa did not fall — it became necropolis. Liches tax memories. Cathedrals sing Abyssal Echoes. Blackveil trades cursed relics.",
+      "body": "KENBA did not fall — it became necropolis. Liches tax memories. Cathedrals sing Abyssal Echoes. Blackveil trades cursed relics.",
       "cards": {
         "0": { "title": "Soul Fragments", "body": "Points are taxed memories — the Dominion's currency of the still-breathing dead." },
         "1": { "title": "Cursed Relics", "body": "Mock NFTs manifest as blades, sigils, and echoes — exportable, never minted on-chain in this age." },
-        "2": { "title": "Final Silence", "body": "Prophecy claims KangBa ends when every sworn player holds an Abyssal Echo." }
+        "2": { "title": "Final Silence", "body": "Prophecy claims KENBA ends when every sworn player holds an Abyssal Echo." }
       }
     },
     "factions": {
@@ -202,7 +196,7 @@
       "rewards": "Rewards",
       "invite": "Invite",
       "shop": "Shop",
-      "legal": "© KangBa. Mock experience — not financial advice."
+      "legal": "© KENBA. Mock experience — not financial advice."
     }
   },
   "referral": {

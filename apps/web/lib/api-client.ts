@@ -21,7 +21,7 @@ import type {
   CampaignSummary,
   EventSummary,
   EventDetailResponse,
-} from "@kangba/types";
+} from "@kenba/types";
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "http://127.0.0.1:4000";
@@ -88,22 +88,20 @@ export const authApi = {
     });
   },
 
-  emailRequest(email: string) {
-    return apiFetch<{ email: string; expiresAt: string; message: string }>(
-      "/api/login/email/request",
-      { method: "POST", body: JSON.stringify({ email }) },
-    );
+  providers() {
+    return apiFetch<{ google: boolean; twitter: boolean }>("/api/auth/providers");
   },
 
-  emailVerify(email: string, code: string) {
-    return apiFetch<AuthSession>("/api/login/email/verify", {
+  oauthComplete(ticket: string) {
+    return apiFetch<AuthSession>("/api/auth/oauth/complete", {
       method: "POST",
-      body: JSON.stringify({ email, code }),
+      body: JSON.stringify({ ticket }),
     });
   },
 
-  twitterPlaceholder() {
-    return apiFetch<never>("/api/login/twitter", { method: "POST", body: JSON.stringify({}) });
+  oauthLoginUrl(provider: "google" | "twitter", returnTo: string) {
+    const base = API_BASE.replace(/\/$/, "");
+    return `${base}/api/login/${provider}?returnTo=${encodeURIComponent(returnTo)}`;
   },
 
   refresh(refreshToken: string) {

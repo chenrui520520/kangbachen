@@ -1,33 +1,46 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import {
-  coinbaseWallet,
-  metaMaskWallet,
-  okxWallet,
-  rainbowWallet,
-  walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+import { metaMaskWallet, okxWallet } from "@rainbow-me/rainbowkit/wallets";
+import { createConfig, http } from "wagmi";
+import { injected } from "wagmi/connectors";
 import { mainnet, sepolia } from "wagmi/chains";
+import { isWalletConnectConfigured } from "./wallet-connect";
 
-let cached: ReturnType<typeof getDefaultConfig> | null = null;
+const chains = [mainnet, sepolia] as const;
 
-export function getWagmiConfig() {
+export type WagmiConfigInstance = ReturnType<typeof createConfig> | ReturnType<typeof getDefaultConfig>;
+
+let cached: WagmiConfigInstance | null = null;
+
+/** RainbowKit + WalletConnect — only when a valid Reown project id is set. */
+export function isRainbowKitEnabled(): boolean {
+  return isWalletConnectConfigured();
+}
+
+export function getWagmiConfig(): WagmiConfigInstance {
   if (cached) return cached;
 
-  const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID;
-  if (!projectId) {
-    // WalletConnect requires a project id; placeholder avoids crashing the module graph in dev.
-    // Replace with a real id from https://cloud.reown.com/ for wallet features.
-    console.warn("[KangBa] NEXT_PUBLIC_WC_PROJECT_ID is not set.");
+  if (!isWalletConnectConfigured()) {
+    cached = createConfig({
+      chains: [...chains],
+      connectors: [injected({ shimDisconnect: true })],
+      transports: {
+        [mainnet.id]: http(),
+        [sepolia.id]: http(),
+      },
+      ssr: true,
+    });
+    return cached;
   }
 
+  const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID!.trim();
   cached = getDefaultConfig({
-    appName: "KangBa",
-    projectId: projectId ?? "00000000000000000000000000000000",
-    chains: [mainnet, sepolia],
+    appName: "KENBA",
+    projectId,
+    chains: [...chains],
     wallets: [
       {
         groupName: "Recommended",
-        wallets: [metaMaskWallet, okxWallet, coinbaseWallet, rainbowWallet, walletConnectWallet],
+        wallets: [metaMaskWallet, okxWallet],
       },
     ],
     ssr: true,

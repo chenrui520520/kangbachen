@@ -2,6 +2,7 @@ import "./bootstrap-env.js";
 import { randomUUID } from "node:crypto";
 import Fastify from "fastify";
 import { loadEnv } from "./config/env.js";
+import { assertProductionReady } from "./config/production-guard.js";
 import { registerErrorHandler } from "./middleware/error-handler.js";
 import { registerPlugins } from "./plugins/index.js";
 import { registerRoutes } from "./routes/index.js";
@@ -9,6 +10,7 @@ import { adminAuthService } from "./services/admin-auth.service.js";
 import { monitoringService } from "./services/monitoring.service.js";
 
 loadEnv();
+assertProductionReady(process.env);
 
 const port = Number(process.env.PORT ?? 4000);
 const host = process.env.HOST ?? "0.0.0.0";

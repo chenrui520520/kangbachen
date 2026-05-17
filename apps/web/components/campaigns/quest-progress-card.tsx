@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button, cn } from "@kangba/ui";
+import { Button, cn } from "@kenba/ui";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 type Quest = {

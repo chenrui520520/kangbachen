@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@kangba/ui";
+import { Label } from "@kenba/ui";
 
 type Props = {
   label?: string;

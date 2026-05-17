@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const base =
-    process.env.API_INTERNAL_URL ?? process.env.KANGBA_API_URL ?? "http://127.0.0.1:4000";
+    process.env.API_INTERNAL_URL ?? process.env.KENBA_API_URL ?? "http://127.0.0.1:4000";
 
   try {
     const res = await fetch(`${base.replace(/\/$/, "")}/health`, { cache: "no-store" });

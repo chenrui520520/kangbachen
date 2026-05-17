@@ -5,7 +5,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@kangba/ui/*": ["./src/*"]
+      "@kenba/ui/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "tailwind-preset.ts"]

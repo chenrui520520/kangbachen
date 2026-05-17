@@ -1,6 +1,6 @@
 "use client";
 
-import { LocaleSwitcher, Separator, Button, cn } from "@kangba/ui";
+import { LocaleSwitcher, Separator, Button, cn } from "@kenba/ui";
 import { AuthHeaderActions } from "@/components/auth/auth-header-actions";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { AudioMuteToggle } from "@/components/audio/audio-provider";
@@ -17,7 +17,6 @@ const links = [
   { href: "/leaderboard", key: "leaderboard" },
   { href: "/events", key: "events" },
   { href: "/shop", key: "shop" },
-  { href: "/litepaper", key: "litepaper" },
   { href: "/invite", key: "invite" },
 ] as const;
 
@@ -39,7 +38,7 @@ export function SiteHeader({ labels }: { labels: Record<(typeof links)[number]["
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild variant="ghost" className="px-2 text-sm font-semibold tracking-[0.25em]">
-            <Link href="/">KANGBA</Link>
+            <Link href="/">KENBA</Link>
           </Button>
           <Separator orientation="vertical" className="hidden h-6 md:block" />
           <nav className="hidden flex-wrap items-center gap-2 text-sm text-muted-foreground md:flex">

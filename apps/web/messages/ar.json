@@ -8,17 +8,16 @@
     "leaderboard": "المتصدرين",
     "events": "الفعاليات",
     "shop": "المتجر",
-    "litepaper": "الورقة البيضاء",
     "invite": "دعوة"
   },
   "home": {
-    "title": "ادخل عالم KangBa",
+    "title": "ادخل عالم KENBA",
     "subtitle": "مركز Web3 بأسلوب فانتازيا مظلم للمهمات والمكافآت والهوية على السلسلة.",
     "cta_docs": "اقرأ خارطة الطريق"
   },
   "auth": {
-    "title": "تسجيل الدخول إلى KangBa",
-    "subtitle": "اربط محفظتك أو البريد أو انتظر تسجيل X.",
+    "title": "تسجيل الدخول إلى KENBA",
+    "subtitle": "اربط محفظتك أو سجّل دخولاً بنقرة عبر Google (البريد) أو X.",
     "signIn": "تسجيل الدخول",
     "signOut": "تسجيل الخروج",
     "signedIn": "تم تسجيل الدخول",
@@ -28,19 +27,14 @@
     "signWithWallet": "وقّع الرسالة للمتابعة",
     "signing": "جاري التوقيع…",
     "emailSection": "البريد",
-    "emailLabel": "البريد الإلكتروني",
-    "sendCode": "إرسال رمز التحقق",
-    "sending": "جاري الإرسال…",
-    "codeLabel": "رمز من 6 أرقام",
-    "verifyCode": "تحقق وسجّل الدخول",
-    "verifying": "جاري التحقق…",
-    "changeEmail": "استخدام بريد آخر",
-    "emailCodeSent": "تم إرسال الرمز (راجع سجلات الخادم في التطوير)",
-    "emailError": "فشل تسجيل الدخول بالبريد",
+    "emailSignIn": "تسجيل بالبريد بنقرة",
+    "emailHint": "الانتقال إلى Google للمصادقة (بدون رمز تحقق).",
+    "emailNotConfigured": "تسجيل البريد غير مُعد (GOOGLE_CLIENT_ID)",
     "twitterSignIn": "المتابعة مع X",
-    "twitterHint": "OAuth قريباً — عنصر نائب",
-    "twitterPlaceholder": "تسجيل X / Twitter غير متاح بعد",
-    "twitterError": "تسجيل Twitter غير متاح",
+    "twitterHint": "الانتقال إلى X للمصادقة.",
+    "twitterNotConfigured": "تسجيل X غير مُعد (TWITTER_CLIENT_ID)",
+    "oauthCompleting": "جاري إكمال تسجيل الدخول…",
+    "oauthError": "فشلت المصادقة",
     "pointsLabel": "{points} نقطة"
   },
   "engagement": {
@@ -115,12 +109,12 @@
   },
   "landing": {
     "meta": {
-      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "title": "KENBA — Enter the Dark Fantasy Web3 Realm",
       "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
     },
     "hero": {
       "badge": "عصر السكون · الملك الأجوف",
-      "title": "KangBa",
+      "title": "KENBA",
       "subtitle": "حضارة أموات أحياء يقودها اقتصاد الأرواح المحرّم — ادفع الضريبة، اربط الشهود، واحصل على الآثار الملعونة.",
       "ctaRewards": "استلم شظايا الأرواح",
       "ctaLore": "ادخل النيكروبوليس",
@@ -247,7 +241,7 @@
       "rewards": "Rewards",
       "invite": "Invite",
       "shop": "Shop",
-      "legal": "© KangBa. Mock experience — not financial advice."
+      "legal": "© KENBA. Mock experience — not financial advice."
     }
   },
   "referral": {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 export function Particles({ className, density = 48 }: { className?: string; density?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

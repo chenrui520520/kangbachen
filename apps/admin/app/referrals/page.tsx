@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@kangba/ui";
+import { Card, CardContent, CardHeader, CardTitle, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 
 export default async function AdminReferralsPage() {

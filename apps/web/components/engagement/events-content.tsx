@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@kangba/ui";
+import { Skeleton } from "@kenba/ui";
 import { useEvents } from "@/hooks/use-engagement";
 import { EventCard } from "./event-card";
 

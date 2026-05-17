@@ -34,6 +34,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.server
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmmirror.com}
     restart: unless-stopped
     env_file: .env
     environment:
@@ -60,6 +62,9 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.web
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmmirror.com}
+        NEXT_PUBLIC_WC_PROJECT_ID: ${NEXT_PUBLIC_WC_PROJECT_ID:-}
     restart: unless-stopped
     env_file: .env
     environment:
@@ -81,6 +86,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.admin
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmmirror.com}
     restart: unless-stopped
     env_file: .env
     environment:

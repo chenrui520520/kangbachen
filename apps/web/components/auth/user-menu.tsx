@@ -10,10 +10,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@kangba/ui";
+} from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useAuthStore } from "@/lib/stores/auth-store";
-import { useWalletAuth } from "@/hooks/use-wallet-auth";
+import { useAuthSignOut } from "@/hooks/use-auth-sign-out";
 
 function shortAddress(addr: string) {
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
@@ -22,7 +22,7 @@ function shortAddress(addr: string) {
 export function UserMenu() {
   const t = useTranslations("auth");
   const user = useAuthStore((s) => s.user);
-  const { signOut } = useWalletAuth();
+  const signOut = useAuthSignOut();
 
   if (!user) return null;
 
@@ -43,9 +43,7 @@ export function UserMenu() {
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="font-normal">
           <p className="text-sm font-medium">{label}</p>
-          <p className="text-xs text-muted-foreground">
-            {t("pointsLabel", { points: user.points })}
-          </p>
+          <p className="text-xs text-muted-foreground">{t("pointsLabel", { points: user.points })}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {primaryWallet && (

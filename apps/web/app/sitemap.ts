@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kangba.local";
+const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://KENBA.local";
 
 const paths = [
   "",
@@ -9,7 +9,6 @@ const paths = [
   "/lore/timeline",
   "/lore/characters",
   "/campaigns",
-  "/litepaper",
   "/tokenomics",
   "/roadmap",
   "/faq",

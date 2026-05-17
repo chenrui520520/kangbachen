@@ -1,7 +1,7 @@
-# KangBa 技术架构文档（Technical Architecture Document）
+# KENBA 技术架构文档（Technical Architecture Document）
 
 ````markdown
-# KangBa Technical Architecture Document
+# KENBA Technical Architecture Document
 
 ---
 
@@ -9,7 +9,7 @@
 
 ## 1.1 核心目标
 
-KangBa 官网需要实现：
+KENBA 官网需要实现：
 
 - AAA 游戏官网视觉
 - Web3 钱包登录
@@ -548,7 +548,7 @@ SMTP：
 # 19. 项目目录结构（最终）
 
 ```bash
-kangba/
+KENBA/
 ├── apps/
 │   ├── web/
 │   └── admin/

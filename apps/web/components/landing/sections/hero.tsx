@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 import { Link } from "@/i18n/navigation";
 import { VideoBackground } from "@/components/media/video-background";
 import { Particles } from "@/components/fx/particles";

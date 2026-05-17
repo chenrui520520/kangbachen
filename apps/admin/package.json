@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kangba/types": "workspace:*",
-    "@kangba/ui": "workspace:*",
+    "@kenba/types": "workspace:*",
+    "@kenba/ui": "workspace:*",
     "@tanstack/react-table": "^8.21.2",
     "lucide-react": "^0.474.0",
     "next": "^15.2.0",

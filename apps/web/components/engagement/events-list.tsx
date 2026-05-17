@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Skeleton } from "@kangba/ui";
+import { Skeleton } from "@kenba/ui";
 import { useLocale } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import { eventApi } from "@/lib/api-client";
 import { useAuthStore } from "@/lib/stores/auth-store";
 import { EventCard } from "./event-card";
-import type { EventItem, EventSummary } from "@kangba/types";
+import type { EventItem, EventSummary } from "@kenba/types";
 
 function toEventItem(e: EventSummary): EventItem {
   return {

@@ -1,5 +1,6 @@
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 import { authController } from "../../controllers/auth.controller.js";
+import { oauthController } from "../../controllers/oauth.controller.js";
 import { commerceController } from "../../controllers/commerce.controller.js";
 import { engagementController } from "../../controllers/engagement.controller.js";
 import { signinController } from "../../controllers/signin.controller.js";
@@ -8,6 +9,7 @@ import { referralController } from "../../controllers/referral.controller.js";
 import { cmsPublicController } from "../../controllers/cms.controller.js";
 import { cmsAdminController } from "../../controllers/cms-admin.controller.js";
 import { mediaAdminController } from "../../controllers/media-admin.controller.js";
+import { contentAdminController } from "../../controllers/content-admin.controller.js";
 import { analyticsController } from "../../controllers/analytics.controller.js";
 import { adminAuthController } from "../../controllers/admin-auth.controller.js";
 import { lorePublicController } from "../../controllers/lore.controller.js";
@@ -49,6 +51,14 @@ export const apiV1Routes: FastifyPluginAsync = async (app) => {
   app.post("/login/email/verify", { config: { rateLimit: authRateLimit } }, authController.emailVerify);
   app.post("/login/email", { config: { rateLimit: authRateLimit } }, authController.emailVerify);
   app.post("/login/twitter", { config: { rateLimit: authRateLimit } }, authController.loginTwitter);
+
+  app.get("/auth/providers", oauthController.providers);
+  app.get("/login/google", oauthController.googleStart);
+  app.get("/login/google/callback", oauthController.googleCallback);
+  app.get("/login/twitter", oauthController.twitterStart);
+  app.get("/login/twitter/callback", oauthController.twitterCallback);
+  app.post("/auth/oauth/complete", { config: { rateLimit: authRateLimit } }, oauthController.complete);
+
   app.post("/auth/refresh", { config: { rateLimit: authRateLimit } }, authController.refresh);
   app.post("/auth/logout", authController.logout);
   app.get("/auth/me", { preHandler: requireAuth }, authController.me);
@@ -81,6 +91,7 @@ export const apiV1Routes: FastifyPluginAsync = async (app) => {
 
   app.post("/admin/auth/login", { config: { rateLimit: authRateLimit } }, adminAuthController.login);
   app.get("/admin/auth/me", { preHandler: requireAdminJwt }, adminAuthController.me);
+  app.post("/admin/auth/change-password", { preHandler: requireAdminJwt }, adminAuthController.changePassword);
 
   app.get("/admin/stats/users", { preHandler: adminPre(["analytics:read"]) }, adminController.userStats);
   app.get("/admin/analytics", { preHandler: adminPre(["analytics:read"]) }, analyticsController.dashboard);
@@ -88,8 +99,17 @@ export const apiV1Routes: FastifyPluginAsync = async (app) => {
   app.get("/admin/audit", { preHandler: adminPre(["analytics:read"]) }, adminController.auditLogs);
 
   app.get("/admin/users", { preHandler: adminPre(["users:read"]) }, adminController.listUsers);
+  app.post("/admin/users/points", { preHandler: adminPre(["users:write"]) }, contentAdminController.adjustUserPoints);
   app.get("/admin/referrals", { preHandler: adminPre(["users:read"]) }, adminController.listReferrals);
-  app.get("/admin/shop", { preHandler: adminPre(["users:read"]) }, adminController.listShop);
+  app.get("/admin/shop", { preHandler: adminPre(["cms:read"]) }, contentAdminController.listShop);
+  app.post("/admin/shop", { preHandler: adminPre(["cms:write"]) }, contentAdminController.saveShop);
+  app.get("/admin/tasks", { preHandler: adminPre(["cms:read"]) }, contentAdminController.listTasks);
+  app.post("/admin/tasks", { preHandler: adminPre(["cms:write"]) }, contentAdminController.saveTask);
+  app.get("/admin/nfts", { preHandler: adminPre(["cms:read"]) }, contentAdminController.listNfts);
+  app.post("/admin/nfts", { preHandler: adminPre(["cms:write"]) }, contentAdminController.saveNft);
+  app.get("/admin/content/overview", { preHandler: adminPre(["cms:read"]) }, contentAdminController.overview);
+  app.get("/admin/signin-rewards", { preHandler: adminPre(["cms:read"]) }, contentAdminController.listSignInRewards);
+  app.post("/admin/signin-rewards", { preHandler: adminPre(["cms:write"]) }, contentAdminController.saveSignInReward);
 
   app.get("/admin/export/rewards", { preHandler: requireAdminAccess }, adminController.exportRewards);
   app.get("/admin/export/leaderboard", { preHandler: requireAdminAccess }, adminController.exportLeaderboard);

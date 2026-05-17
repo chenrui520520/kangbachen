@@ -1,7 +1,7 @@
 "use client";
 
-import type { TaskItem } from "@kangba/types";
-import { Badge, Button, Card, CardContent, CardHeader, CardTitle, toast } from "@kangba/ui";
+import type { TaskItem } from "@kenba/types";
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, toast } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useCompleteTask } from "@/hooks/use-engagement";
 import { ApiClientError } from "@/lib/api-client";

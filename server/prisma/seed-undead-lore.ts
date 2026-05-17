@@ -22,7 +22,7 @@ const FACTIONS: Record<
       name: "Necropolis Dominion",
       tagline: "Empire of the still-breathing dead",
       motto: "No throne survives the grave",
-      body: "## Necropolis Dominion\n\nThe last civilization of KangBa did not fall — it **died upright**. Marble citadels house liches who tax soul fragments. Every citizen owes the Dominion a memory.",
+      body: "## Necropolis Dominion\n\nThe last civilization of KENBA did not fall — it **died upright**. Marble citadels house liches who tax soul fragments. Every citizen owes the Dominion a memory.",
       colorTheme: "ash",
       sortOrder: 0,
     },
@@ -51,7 +51,7 @@ const FACTIONS: Record<
       name: "死灵都城邦",
       tagline: "伫立而亡的帝国",
       motto: "王座难逃坟墓",
-      body: "## 死灵都城邦\n\n康巴最后的文明并未崩塌——而是**站着死去**。大理石城塞中的巫妖向臣民征收灵魂碎片。",
+      body: "## 死灵都城邦\n\nKENBA最后的文明并未崩塌——而是**站着死去**。大理石城塞中的巫妖向臣民征收灵魂碎片。",
       colorTheme: "ash",
       sortOrder: 0,
     },
@@ -747,7 +747,7 @@ const TIMELINE: Record<
     {
       slug: "final-silence-prophecy",
       title: "Prophecy of Final Silence",
-      body: "Oracles claim KangBa will end when every player holds an **Abyssal Echo**.",
+      body: "Oracles claim KENBA will end when every player holds an **Abyssal Echo**.",
       era: "Present",
       yearLabel: "Year 0",
       sortOrder: 3,
@@ -784,7 +784,7 @@ const TIMELINE: Record<
     {
       slug: "final-silence-prophecy",
       title: "终末寂静预言",
-      body: "先知宣称当每位玩家持有**深渊回响**，康巴将终结。",
+      body: "先知宣称当每位玩家持有**深渊回响**，KENBA将终结。",
       era: "当下",
       yearLabel: "第0年",
       sortOrder: 3,
@@ -1390,12 +1390,12 @@ const DOC_BUNDLE: Record<
 
 const DOC_LITE: Record<Locale, { title: string; body: string }> = {
   en: {
-    title: "KangBa — Soul Economics of a Dying Civilization",
-    body: "# KangBa Litepaper\n\nKangBa is a **dying undead civilization** powered by forbidden soul economics.\n\n## Soul Fragments\n\nPoints represent taxed memories. Mock NFTs manifest as **cursed relics**, **necrotic sigils**, and **Abyssal Echoes**.\n\n## No On-Chain Minting (Phase 6.x)\n\nAll rewards are virtual, exportable, privacy-safe.",
+    title: "KENBA — Soul Economics of a Dying Civilization",
+    body: "# KENBA Litepaper\n\nKENBA is a **dying undead civilization** powered by forbidden soul economics.\n\n## Soul Fragments\n\nPoints represent taxed memories. Mock NFTs manifest as **cursed relics**, **necrotic sigils**, and **Abyssal Echoes**.\n\n## No On-Chain Minting (Phase 6.x)\n\nAll rewards are virtual, exportable, privacy-safe.",
   },
   zh: {
-    title: "康巴 — 将亡文明的灵魂经济学",
-    body: "# 康巴白皮书\n\n康巴是一个由**禁术灵魂经济**驱动的**将亡不死文明**。\n\n## 灵魂碎片\n\n积分是被征税的记忆。虚拟藏品体现为**诅咒遗物**、**死灵印记**与**深渊回响**。",
+    title: "KENBA — 将亡文明的灵魂经济学",
+    body: "# KENBA白皮书\n\nKENBA是一个由**禁术灵魂经济**驱动的**将亡不死文明**。\n\n## 灵魂碎片\n\n积分是被征税的记忆。虚拟藏品体现为**诅咒遗物**、**死灵印记**与**深渊回响**。",
   },
   ko: {
     title: "캉바 — 죽어가는 문명의 영혼 경제",

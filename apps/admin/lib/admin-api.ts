@@ -46,6 +46,17 @@ export const adminApi = {
       body: JSON.stringify({ email, password }),
     });
   },
+  me: () => adminFetch<{ id: string; email: string; role: string }>("/api/admin/auth/me"),
+  changePassword(currentPassword: string, newPassword: string) {
+    return adminFetch<{ ok: boolean }>("/api/admin/auth/change-password", {
+      method: "POST",
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+  },
+  contentOverview: () =>
+    adminFetch<{ pages: number; posts: number; banners: number; faqs: number; announcements: number }>(
+      "/api/admin/content/overview",
+    ),
   stats: () => adminFetch<Record<string, unknown>>("/api/admin/stats/users"),
   analytics: (days = 14) => adminFetch<unknown>(`/api/admin/analytics?days=${days}`),
   systemStatus: () => adminFetch<Record<string, unknown>>("/api/admin/system/status"),
@@ -65,6 +76,22 @@ export const adminApi = {
   saveBadge: (body: unknown) =>
     adminFetch<unknown>("/api/admin/community/badges", { method: "POST", body: JSON.stringify(body) }),
   shop: () => adminFetch<unknown[]>("/api/admin/shop"),
+  saveShopItem: (body: unknown) =>
+    adminFetch<unknown>("/api/admin/shop", { method: "POST", body: JSON.stringify(body) }),
+  tasks: () => adminFetch<unknown[]>("/api/admin/tasks"),
+  saveTask: (body: unknown) =>
+    adminFetch<unknown>("/api/admin/tasks", { method: "POST", body: JSON.stringify(body) }),
+  nfts: () => adminFetch<unknown[]>("/api/admin/nfts"),
+  saveNft: (body: unknown) =>
+    adminFetch<unknown>("/api/admin/nfts", { method: "POST", body: JSON.stringify(body) }),
+  signInRewards: () => adminFetch<unknown[]>("/api/admin/signin-rewards"),
+  saveSignInReward: (body: unknown) =>
+    adminFetch<unknown>("/api/admin/signin-rewards", { method: "POST", body: JSON.stringify(body) }),
+  adjustUserPoints: (body: { userId: string; mode: "add" | "deduct" | "set"; amount: number; note?: string }) =>
+    adminFetch<{ userId: string; email: string | null; points: number }>("/api/admin/users/points", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
   referrals: (page = 1) =>
     adminFetch<{ total: number; rows: unknown[] }>(`/api/admin/referrals?page=${page}&limit=20`),
   users: (page = 1, search?: string) =>
@@ -123,6 +150,9 @@ export const adminApi = {
   loreCharacters: () => adminFetch<unknown[]>("/api/admin/lore/characters"),
   saveLoreCharacter: (body: unknown) =>
     adminFetch<unknown>("/api/admin/lore/characters", { method: "POST", body: JSON.stringify(body) }),
+  loreTimeline: () => adminFetch<unknown[]>("/api/admin/lore/timeline"),
+  saveLoreTimeline: (body: unknown) =>
+    adminFetch<unknown>("/api/admin/lore/timeline", { method: "POST", body: JSON.stringify(body) }),
   docs: () => adminFetch<unknown[]>("/api/admin/docs"),
   saveDoc: (body: unknown) =>
     adminFetch<unknown>("/api/admin/docs", { method: "POST", body: JSON.stringify(body) }),

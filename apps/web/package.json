@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "@kangba/types": "workspace:*",
-    "@kangba/ui": "workspace:*",
-    "@kangba/utils": "workspace:*",
+    "@kenba/types": "workspace:*",
+    "@kenba/ui": "workspace:*",
+    "@kenba/utils": "workspace:*",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@tanstack/react-query": "^5.66.0",
     "ethers": "^6.13.5",

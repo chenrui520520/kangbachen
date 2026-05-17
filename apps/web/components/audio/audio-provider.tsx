@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 type AudioContextValue = {
   muted: boolean;

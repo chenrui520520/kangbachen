@@ -1,7 +1,7 @@
 "use client";
 
-import type { ShopItemDto } from "@kangba/types";
-import { Badge, Button, Card, CardContent, CardFooter, CardHeader, CardTitle, Skeleton, toast } from "@kangba/ui";
+import type { ShopItemDto } from "@kenba/types";
+import { Badge, Button, Card, CardContent, CardFooter, CardHeader, CardTitle, Skeleton, toast } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useShop, useShopPurchase } from "@/hooks/use-engagement";
 import { ApiClientError } from "@/lib/api-client";

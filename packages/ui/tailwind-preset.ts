@@ -2,9 +2,9 @@ import type { Config } from "tailwindcss";
 
 /**
  * Shared Tailwind theme tokens for shadcn-style components (dark-first).
- * Apps should `presets: [kangbaPreset]` and keep CSS variables in sync with `globals.css`.
+ * Apps should `presets: [kenbaPreset]` and keep CSS variables in sync with `globals.css`.
  */
-const kangbaPreset: Partial<Config> = {
+const kenbaPreset: Partial<Config> = {
   darkMode: ["class"],
   theme: {
     extend: {
@@ -66,4 +66,4 @@ const kangbaPreset: Partial<Config> = {
   },
 };
 
-export default kangbaPreset;
+export default kenbaPreset;

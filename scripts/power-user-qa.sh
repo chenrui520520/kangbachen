@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# KangBa Power User QA — bash (Git Bash / WSL / Linux / macOS)
+# KENBA Power User QA — bash (Git Bash / WSL / Linux / macOS)
 # Usage: ./scripts/power-user-qa.sh [--prod] [--deploy]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -52,7 +52,7 @@ api() {
   curl -sS "${auth[@]}" "${body[@]}" -X "$method" "${API_BASE}${path}"
 }
 
-echo "==> KangBa Power User QA"
+echo "==> KENBA Power User QA"
 echo "    Web: $WEB_BASE | API: $API_BASE | Admin: $ADMIN_BASE"
 
 if [[ "$DEPLOY" -eq 1 ]]; then

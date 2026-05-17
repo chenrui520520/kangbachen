@@ -2,7 +2,7 @@
 
 import { useAuthStore } from "@/lib/stores/auth-store";
 import { campaignApi } from "@/lib/api-client";
-import type { CampaignSummary } from "@kangba/types";
+import type { CampaignSummary } from "@kenba/types";
 import { useState } from "react";
 import { CampaignCountdown } from "./campaign-countdown";
 import { QuestProgressCard } from "./quest-progress-card";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@kangba/ui";
+import { Skeleton } from "@kenba/ui";
 import { useTasks } from "@/hooks/use-engagement";
 import { TaskCard } from "./task-card";
 

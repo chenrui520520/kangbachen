@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useState } from "react";
-import { Button, Card, CardContent, CardHeader, CardTitle, Skeleton } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, Skeleton } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useIsAuthenticated, useAuthStore } from "@/lib/stores/auth-store";
 import { LoginModal } from "@/components/auth/login-modal";

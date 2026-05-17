@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 import { Link } from "@/i18n/navigation";
 import { SectionReveal } from "@/components/fx/section-reveal";
 import { GlowCard } from "@/components/fx/glow-card";

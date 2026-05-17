@@ -1,4 +1,4 @@
-# KangBa Power User QA — Windows / PowerShell
+# KENBA Power User QA — Windows / PowerShell
 # Usage: .\scripts\power-user-qa.ps1 [-SkipDeploy] [-Prod]
 param(
   [switch]$SkipDeploy = $true,
@@ -31,7 +31,7 @@ if ($Prod) {
 }
 
 $AdminKey = $env:ADMIN_API_KEY
-$PowerEmail = if ($env:QA_POWER_EMAIL) { $env:QA_POWER_EMAIL } else { "poweruser@kangba.local" }
+$PowerEmail = if ($env:QA_POWER_EMAIL) { $env:QA_POWER_EMAIL } else { "poweruser@KENBA.local" }
 $Locale = if ($env:QA_LOCALE) { $env:QA_LOCALE } else { "en" }
 
 $failures = 0
@@ -74,7 +74,7 @@ function Invoke-Api {
   return $raw
 }
 
-Write-Host "==> KangBa Power User QA"
+Write-Host "==> KENBA Power User QA"
 Write-Host "    Web: $WebBase | API: $ApiBase | Admin: $AdminBase"
 
 if (-not $SkipDeploy -and $Prod) {

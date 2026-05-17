@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button, Card, CardContent, CardHeader, CardTitle, Skeleton, toast } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, Skeleton, toast } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useSignInClaim, useSignInStatus } from "@/hooks/use-engagement";
 import { ApiClientError } from "@/lib/api-client";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 export function SignInPanel() {
   const t = useTranslations("engagement");

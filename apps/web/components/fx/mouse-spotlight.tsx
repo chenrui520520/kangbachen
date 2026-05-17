@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 export function MouseSpotlight({ className }: { className?: string }) {
   const [pos, setPos] = useState({ x: 50, y: 30 });

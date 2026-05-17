@@ -15,8 +15,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@kangba/ui";
+} from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
+import { UserPointsDialog } from "@/components/user-points-dialog";
 import { zh } from "@/lib/zh";
 
 type UserRow = {
@@ -34,12 +35,16 @@ export function UsersTable() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState<{ total: number; users: UserRow[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [adjustUserId, setAdjustUserId] = useState<string | null>(null);
 
-  useEffect(() => {
-    void adminApi
+  const load = () =>
+    adminApi
       .users(page, search || undefined)
       .then((res) => setData(res as { total: number; users: UserRow[] }))
       .catch((e: Error) => setError(e.message));
+
+  useEffect(() => {
+    load();
   }, [page, search]);
 
   return (
@@ -58,6 +63,26 @@ export function UsersTable() {
       </CardHeader>
       <CardContent>
         {error && <p className="mb-4 text-sm text-destructive">{error}</p>}
+        {adjustUserId && data?.users && (
+          <div className="mb-4">
+            {(() => {
+              const u = data.users.find((x) => x.id === adjustUserId);
+              if (!u) return null;
+              return (
+                <UserPointsDialog
+                  userId={u.id}
+                  email={u.email}
+                  currentPoints={u.points}
+                  onClose={() => setAdjustUserId(null)}
+                  onSuccess={() => {
+                    setAdjustUserId(null);
+                    load();
+                  }}
+                />
+              );
+            })()}
+          </div>
+        )}
         <Table>
           <TableHeader>
             <TableRow>
@@ -66,6 +91,7 @@ export function UsersTable() {
               <TableHead>积分</TableHead>
               <TableHead>连续签到</TableHead>
               <TableHead>邀请码</TableHead>
+              <TableHead>操作</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -77,6 +103,11 @@ export function UsersTable() {
                 <TableCell>{u.signInStreak}</TableCell>
                 <TableCell>
                   {u.referralCode ? <Badge variant="outline">{u.referralCode.code}</Badge> : "—"}
+                </TableCell>
+                <TableCell>
+                  <Button size="sm" variant="outline" onClick={() => setAdjustUserId(u.id)}>
+                    调整积分
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

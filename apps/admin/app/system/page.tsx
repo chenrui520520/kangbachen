@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Badge, Card, CardContent, CardHeader, CardTitle } from "@kangba/ui";
+import { Badge, Card, CardContent, CardHeader, CardTitle } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 
 export default function AdminSystemPage() {

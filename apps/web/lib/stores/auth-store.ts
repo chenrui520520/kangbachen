@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { AuthSession, AuthUser } from "@kangba/types";
+import type { AuthSession, AuthUser } from "@kenba/types";
 import { authApi } from "@/lib/api-client";
 
 type AuthState = {
@@ -72,7 +72,7 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: "kangba-auth",
+      name: "KENBA-auth",
       partialize: (s) => ({
         user: s.user,
         accessToken: s.accessToken,

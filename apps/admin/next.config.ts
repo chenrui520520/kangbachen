@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   basePath: "/admin",
-  transpilePackages: ["@kangba/ui"],
+  transpilePackages: ["@kenba/ui"],
 };
 
 export default nextConfig;

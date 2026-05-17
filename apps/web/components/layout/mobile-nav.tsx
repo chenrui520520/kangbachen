@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { Button, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@kangba/ui";
+import { Button, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@kenba/ui";
 import { Link } from "@/i18n/navigation";
 import { AuthHeaderActions } from "@/components/auth/auth-header-actions";
 import { AudioMuteToggle } from "@/components/audio/audio-provider";
@@ -15,7 +15,6 @@ const links = [
   { href: "/leaderboard", key: "leaderboard" },
   { href: "/events", key: "events" },
   { href: "/shop", key: "shop" },
-  { href: "/litepaper", key: "litepaper" },
   { href: "/invite", key: "invite" },
 ] as const;
 
@@ -29,7 +28,7 @@ export function MobileNav({ labels }: { labels: Record<(typeof links)[number]["k
       </SheetTrigger>
       <SheetContent side="right" className="border-border/60 bg-background/95 backdrop-blur-xl">
         <SheetHeader>
-          <SheetTitle className="tracking-[0.25em]">KANGBA</SheetTitle>
+          <SheetTitle className="tracking-[0.25em]">KENBA</SheetTitle>
         </SheetHeader>
         <nav className="mt-8 flex flex-col gap-2">
           {links.map((l) => (

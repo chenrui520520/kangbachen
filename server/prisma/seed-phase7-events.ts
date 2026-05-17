@@ -28,7 +28,7 @@ const EVENT_COPY: Record<
       hollow: [
         { title: "Witness the first hymn", description: "Open the event chronicle.", taskKey: "witness-hymn" },
         { title: "Pay the soul tithe", description: "Complete any daily sign-in during the awakening.", taskKey: "pay-tithe" },
-        { title: "Bind a witness soul", description: "Invite one ally to KangBa.", taskKey: "bind-witness" },
+        { title: "Bind a witness soul", description: "Invite one ally to KENBA.", taskKey: "bind-witness" },
         { title: "Claim a cursed relic", description: "Earn any mock NFT reward.", taskKey: "claim-relic" },
       ],
       blackveil: [

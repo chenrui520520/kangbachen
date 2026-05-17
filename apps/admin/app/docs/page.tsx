@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
-import { Button, Input, Label, toast } from "@kangba/ui";
+import { Button, Input, Label, toast } from "@kenba/ui";
 import { BodyTextField } from "@/components/body-text-field";
 import { zh } from "@/lib/zh";
 
-const CATEGORIES = ["litepaper", "docs", "tokenomics", "roadmap", "faq"] as const;
+const CATEGORIES = ["docs", "tokenomics", "roadmap", "faq"] as const;
 
 type DocRow = {
   id: string;
@@ -23,7 +23,7 @@ export default function AdminDocsPage() {
   const [form, setForm] = useState({
     id: "" as string | undefined,
     slug: "overview",
-    category: "litepaper" as (typeof CATEGORIES)[number],
+    category: "docs" as (typeof CATEGORIES)[number],
     locale: "en",
     title: "",
     body: "",
@@ -60,7 +60,6 @@ export default function AdminDocsPage() {
           >
             {(
               [
-                ["litepaper", "轻皮书"],
                 ["docs", "文档"],
                 ["tokenomics", "代币经济"],
                 ["roadmap", "路线图"],

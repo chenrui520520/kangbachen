@@ -1,6 +1,8 @@
-# KangBa
+# KENBA
 
-Monorepo for the KangBa Web3 game official site. Technical source of truth: [`PRDs/development.md`](PRDs/development.md).
+Monorepo for the KENBA Web3 game official site. Technical source of truth: [`PRDs/development.md`](PRDs/development.md).
+
+> **Note:** Branding is **KENBA**; the Postgres database name and Docker network remain `kangba` so existing local/production data volumes keep working. API paths are unchanged (`/api/...`).
 
 ## Prerequisites
 
@@ -12,10 +14,13 @@ If your terminal cannot find `pnpm` or `npx`, ensure the Node.js install directo
 
 ## Quick start (stability-first default)
 
+**完整上线清单（含 Google / X OAuth 逐步配置）见：[docs/MANUAL_SETUP.zh.md](docs/MANUAL_SETUP.zh.md)**
+
 1. Copy environment file and fill `NEXT_PUBLIC_WC_PROJECT_ID` for WalletConnect:
 
    ```bash
    cp .env.example .env
+   # 或：pnpm setup:env
    ```
 
 2. Start **only** Postgres and Redis:
@@ -36,6 +41,8 @@ If your terminal cannot find `pnpm` or `npx`, ensure the Node.js install directo
    ```bash
    pnpm dev
    ```
+
+   OAuth 配置检查：`pnpm oauth:check`（本地未配密钥时可用 `OAUTH_DEV_MOCK=true` 模拟登录）
 
 5. (Optional) Run the admin shell on port **3001**:
 

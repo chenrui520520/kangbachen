@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@kangba/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@kenba/ui";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 type DashboardData = {

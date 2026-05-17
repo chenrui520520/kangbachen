@@ -1,4 +1,4 @@
-# KangBa QA scripts
+# KENBA QA scripts
 
 ## One command (dev stack)
 
@@ -33,7 +33,7 @@ powershell -File scripts/power-user-qa.ps1 -Prod -SkipDeploy:$false
 
 - API `/health`, optional web locale pages
 - Admin logins (SUPERADMIN / EDITOR / VIEWER)
-- Power user email OTP → JWT (`poweruser@kangba.local`, code from DB)
+- Power user email OTP → JWT (`poweruser@KENBA.local`, code from DB)
 - Sign-in claim, tasks, event quests, campaign quests
 - Profile, community, admin export/monitoring
 
@@ -41,7 +41,7 @@ powershell -File scripts/power-user-qa.ps1 -Prod -SkipDeploy:$false
 
 | Issue | Fix |
 |-------|-----|
-| Password login | KangBa uses **email OTP** (`/api/login/email/request` + verify) |
+| Password login | KENBA uses **email OTP** (`/api/login/email/request` + verify) |
 | `accessToken` not `token` | Script uses `data.accessToken` |
 | Admin on :3001 | Admin API is on **:4000** `/api/admin/*` |
 | `/api/profile/me` | Use `/api/auth/me` + `/api/profile/:id` |

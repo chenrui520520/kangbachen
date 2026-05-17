@@ -8,17 +8,16 @@
     "leaderboard": "排行榜",
     "events": "活动",
     "shop": "商城",
-    "litepaper": "白皮书",
     "invite": "邀请"
   },
   "home": {
-    "title": "进入 KangBa 领域",
+    "title": "进入 KENBA 领域",
     "subtitle": "暗黑幻想风 Web3 中枢：任务、奖励与链上身份，为沉浸与长线运营而生。",
     "cta_docs": "查看路线图"
   },
   "auth": {
-    "title": "登录 KangBa",
-    "subtitle": "连接钱包、邮箱验证，或预留 X 登录入口。",
+    "title": "登录 KENBA",
+    "subtitle": "连接钱包，或通过 Google / X 一键授权登录。",
     "signIn": "登录",
     "signOut": "退出登录",
     "signedIn": "登录成功",
@@ -28,24 +27,19 @@
     "signWithWallet": "签名消息以继续",
     "signing": "签名中…",
     "emailSection": "邮箱",
-    "emailLabel": "邮箱地址",
-    "sendCode": "发送验证码",
-    "sending": "发送中…",
-    "codeLabel": "6 位验证码",
-    "verifyCode": "验证并登录",
-    "verifying": "验证中…",
-    "changeEmail": "更换邮箱",
-    "emailCodeSent": "验证码已发送（开发环境请查看服务端日志）",
-    "emailError": "邮箱登录失败",
-    "twitterSignIn": "使用 X 继续",
-    "twitterHint": "OAuth 即将上线 — 当前为占位",
-    "twitterPlaceholder": "X / Twitter 登录尚未开放",
-    "twitterError": "Twitter 登录不可用",
+    "emailSignIn": "邮箱一键登录",
+    "emailHint": "跳转至 Google 授权，使用您的 Gmail / Google 账号登录（无需验证码）。",
+    "emailNotConfigured": "邮箱登录未配置，请在服务端设置 GOOGLE_CLIENT_ID",
+    "twitterSignIn": "X 一键登录",
+    "twitterHint": "跳转至 X 完成授权登录。",
+    "twitterNotConfigured": "X 登录未配置，请在服务端设置 TWITTER_CLIENT_ID",
+    "oauthCompleting": "正在完成登录…",
+    "oauthError": "授权登录失败，请重试",
     "pointsLabel": "{points} 积分"
   },
   "engagement": {
     "signInRequired": "请先登录",
-    "signInRequiredHint": "连接钱包或验证邮箱后即可领取奖励并同步进度。",
+    "signInRequiredHint": "连接钱包或通过 Google / X 登录后即可领取奖励并同步进度。",
     "signInCta": "登录",
     "dailySignIn": "每日签到",
     "streakDays": "连续 {count} 天",
@@ -102,7 +96,7 @@
   },
   "lore": {
     "eyebrow": "禁典",
-    "title": "康巴死灵都城",
+    "title": "KENBA 死灵都城",
     "subtitle": "将亡不死文明——派系、诅咒之地与终末寂静预言。",
     "timeline": "时间线",
     "characters": "角色",
@@ -115,12 +109,12 @@
   },
   "landing": {
     "meta": {
-      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "title": "KENBA — Enter the Dark Fantasy Web3 Realm",
       "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
     },
     "hero": {
       "badge": "静滞纪元 · 空壳王",
-      "title": "KangBa",
+      "title": "KENBA",
       "subtitle": "由禁术灵魂经济学驱动的将亡不死文明——缴纳魂税，束缚见证之魂，夺取诅咒遗物。",
       "ctaRewards": "领取灵魂碎片",
       "ctaLore": "进入死灵都城",
@@ -129,7 +123,7 @@
     },
     "lore": {
       "eyebrow": "Worldview",
-      "title": "The shrouded continent of KangBa",
+      "title": "The shrouded continent of KENBA",
       "body": "Three factions war beneath a blood moon. Your wallet is your sigil; your streak is your oath.",
       "cards": {
         "0": {
@@ -256,7 +250,7 @@
       "rewards": "Rewards",
       "invite": "Invite",
       "shop": "Shop",
-      "legal": "© KangBa. Mock experience — not financial advice."
+      "legal": "© KENBA. Mock experience — not financial advice."
     }
   },
   "referral": {

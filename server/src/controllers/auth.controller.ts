@@ -69,22 +69,13 @@ export const authController = {
       return emailAuthService.verifyCode(body.email, body.code, requestMeta(req));
     }, reply),
 
-  loginTwitter: async (_req: FastifyRequest, reply: FastifyReply) =>
-    reply.status(501).send({
-      success: false,
-      code: 501,
-      message: "Twitter/X OAuth is not implemented yet",
-      details: {
-        status: "placeholder",
-        plannedFlow: [
-          "Redirect to X OAuth authorize URL",
-          "Exchange code for access token",
-          "Fetch X user profile",
-          "Create or link User by twitterId",
-          "Issue JWT session",
-        ],
-      },
-    }),
+  loginTwitter: async (req: FastifyRequest, reply: FastifyReply) => {
+    const returnTo =
+      typeof (req.body as { returnTo?: string })?.returnTo === "string"
+        ? (req.body as { returnTo: string }).returnTo
+        : "/";
+    return reply.redirect(`/api/login/twitter?returnTo=${encodeURIComponent(returnTo)}`);
+  },
 
   refresh: (req: FastifyRequest, reply: FastifyReply) =>
     run(async () => {

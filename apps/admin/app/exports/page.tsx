@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Card, CardContent, CardHeader, CardTitle, toast } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, toast } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 
 type ExportKind = "rewards" | "points" | "referrals" | "leaderboard";

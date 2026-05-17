@@ -96,7 +96,7 @@ async function main() {
     {
       id: "task-daily-login",
       name: "Soul Tithe",
-      description: "Pay the daily soul tithe — open KangBa once per cycle.",
+      description: "Pay the daily soul tithe — open KENBA once per cycle.",
       type: "daily",
       category: "DAILY",
       rewardPoints: 30,
@@ -107,7 +107,7 @@ async function main() {
     {
       id: "task-share-x",
       name: "Spread the Prophecy",
-      description: "Share KangBa's curse on X (honor system).",
+      description: "Share KENBA's curse on X (honor system).",
       type: "social",
       category: "SOCIAL",
       rewardPoints: 80,
@@ -221,7 +221,7 @@ async function main() {
       id: "faq-onchain-en",
       locale: "en",
       question: "What are soul fragments?",
-      answer: "Points and mock NFTs represent taxed memories in KangBa's undead economy — virtual, exportable, not on-chain yet.",
+      answer: "Points and mock NFTs represent taxed memories in KENBA's undead economy — virtual, exportable, not on-chain yet.",
       sortOrder: 1,
       published: true,
     },

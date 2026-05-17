@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Badge } from "@kangba/ui";
+import { Badge } from "@kenba/ui";
 import { SectionReveal } from "@/components/fx/section-reveal";
 import { GlowCard } from "@/components/fx/glow-card";
 

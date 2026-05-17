@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { useAuthStore } from "@/lib/stores/auth-store";
 import { eventApi } from "@/lib/api-client";
-import type { EventSummary } from "@kangba/types";
+import type { EventSummary } from "@kenba/types";
 import { useState } from "react";
 import { CampaignCountdown } from "@/components/campaigns/campaign-countdown";
 import { QuestProgressCard } from "@/components/campaigns/quest-progress-card";
 import { AmbientPlayer } from "@/components/audio/ambient-player";
-import { Badge } from "@kangba/ui";
+import { Badge } from "@kenba/ui";
 
 type ProgressRow = { taskId: string; progress: number; completed: boolean };
 

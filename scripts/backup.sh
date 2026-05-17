@@ -10,7 +10,7 @@ source .env 2>/dev/null || true
 : "${DATABASE_URL:?DATABASE_URL required}"
 
 echo "==> PostgreSQL dump"
-pg_dump "$DATABASE_URL" -Fc -f "$BACKUP_DIR/kangba_${STAMP}.dump"
+pg_dump "$DATABASE_URL" -Fc -f "$BACKUP_DIR/KENBA_${STAMP}.dump"
 
 if [[ -d storage/exports ]] || [[ -d storage/audio ]]; then
   tar -czf "$BACKUP_DIR/storage_${STAMP}.tar.gz" storage/exports storage/videos storage/audio 2>/dev/null || true

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 import { LoginTriggerButton } from "@/components/auth/login-trigger-button";
 
 type Props = {

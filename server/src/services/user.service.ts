@@ -39,16 +39,72 @@ export const userService = {
   },
 
   async findOrCreateByEmail(email: string, language = "en"): Promise<UserProfile> {
+    return userService.findOrCreateByOAuthEmail(email, { username: null, avatarUrl: null }, language);
+  },
+
+  async findOrCreateByOAuthEmail(
+    email: string,
+    profile: { username: string | null; avatarUrl: string | null },
+    language = "en",
+  ): Promise<UserProfile> {
+    const normalized = email.toLowerCase().trim();
     let user = await prisma.user.findFirst({
-      where: { email, deletedAt: null },
+      where: { email: normalized, deletedAt: null },
       include: { walletAccounts: { select: { address: true, chainId: true } } },
     });
     if (!user) {
       user = await prisma.user.create({
-        data: { email, language },
+        data: {
+          email: normalized,
+          language,
+          username: profile.username ?? undefined,
+          avatarUrl: profile.avatarUrl ?? undefined,
+        },
         include: { walletAccounts: { select: { address: true, chainId: true } } },
       });
       await referralService.ensureCode(user.id);
+    } else if (profile.username || profile.avatarUrl) {
+      user = await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          ...(profile.username ? { username: profile.username } : {}),
+          ...(profile.avatarUrl ? { avatarUrl: profile.avatarUrl } : {}),
+        },
+        include: { walletAccounts: { select: { address: true, chainId: true } } },
+      });
+    }
+    return toProfile(user);
+  },
+
+  async findOrCreateByTwitter(
+    twitterId: string,
+    profile: { username: string | null; avatarUrl: string | null },
+    language = "en",
+  ): Promise<UserProfile> {
+    let user = await prisma.user.findFirst({
+      where: { twitterId, deletedAt: null },
+      include: { walletAccounts: { select: { address: true, chainId: true } } },
+    });
+    if (!user) {
+      user = await prisma.user.create({
+        data: {
+          twitterId,
+          language,
+          username: profile.username ?? undefined,
+          avatarUrl: profile.avatarUrl ?? undefined,
+        },
+        include: { walletAccounts: { select: { address: true, chainId: true } } },
+      });
+      await referralService.ensureCode(user.id);
+    } else if (profile.username || profile.avatarUrl) {
+      user = await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          ...(profile.username ? { username: profile.username } : {}),
+          ...(profile.avatarUrl ? { avatarUrl: profile.avatarUrl } : {}),
+        },
+        include: { walletAccounts: { select: { address: true, chainId: true } } },
+      });
     }
     return toProfile(user);
   },

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 
 export function ProfileShare({ userId }: { userId: string }) {
   const url =

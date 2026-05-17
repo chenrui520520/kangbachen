@@ -1,4 +1,4 @@
-const KEY = "kangba_pending_ref";
+const KEY = "KENBA_pending_ref";
 
 export function savePendingReferral(code: string) {
   if (typeof window === "undefined") return;

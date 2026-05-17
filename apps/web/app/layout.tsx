@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://kangba.local"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://KENBA.local"),
   title: {
-    default: "KangBa — Dark Fantasy Web3 Realm",
-    template: "%s · KangBa",
+    default: "KENBA — Dark Fantasy Web3 Realm",
+    template: "%s · KENBA",
   },
   description:
-    "Enter the KangBa realm: cinematic Web3 gaming hub with daily rewards, tasks, events, and mock NFT collectibles.",
-  keywords: ["Web3", "game", "NFT", "dark fantasy", "KangBa", "rewards"],
+    "Enter the KENBA realm: cinematic Web3 gaming hub with daily rewards, tasks, events, and mock NFT collectibles.",
+  keywords: ["Web3", "game", "NFT", "dark fantasy", "KENBA", "rewards"],
   openGraph: {
-    title: "KangBa — Dark Fantasy Web3 Realm",
+    title: "KENBA — Dark Fantasy Web3 Realm",
     description: "Cinematic Web3 game hub with rewards, events, and collectible progression.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KangBa",
+    title: "KENBA",
     description: "Dark fantasy Web3 game hub.",
   },
 };

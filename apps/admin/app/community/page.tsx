@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
-import { Button, Input, Label, Card, CardContent, CardHeader, CardTitle, toast } from "@kangba/ui";
+import { Button, Input, Label, Card, CardContent, CardHeader, CardTitle, toast } from "@kenba/ui";
 import { BodyTextField } from "@/components/body-text-field";
 import { ImageUploadField } from "@/components/image-upload-field";
 import { resolveMediaUrl } from "@/lib/media-url";

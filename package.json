@@ -1,12 +1,13 @@
 {
-  "name": "kangba",
+  "name": "KENBA",
   "private": true,
   "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=22"
   },
   "devDependencies": {
-    "kill-port": "^2.0.1"
+    "kill-port": "^2.0.1",
+    "tsx": "^4.19.2"
   },
   "scripts": {
     "predev": "node scripts/kill-dev-ports.mjs",
@@ -20,6 +21,11 @@
     "db:seed": "pnpm --filter api db:seed",
     "qa:power": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1",
     "qa:power:api": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1 -ApiOnly",
-    "qa:power:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1 -Prod"
+    "qa:power:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/power-user-qa.ps1 -Prod",
+    "test:api": "pnpm --filter api test",
+    "qa:launch": "tsx scripts/launch-check.ts",
+    "setup:env": "node scripts/setup-env.mjs",
+    "oauth:check": "tsx scripts/oauth-check.ts",
+    "db:up": "docker compose up -d"
   }
 }

@@ -37,7 +37,6 @@ export default async function LocaleLayout({ children, params }: Props) {
     leaderboard: t("leaderboard"),
     events: t("events"),
     shop: t("shop"),
-    litepaper: t("litepaper"),
     invite: t("invite"),
   };
 

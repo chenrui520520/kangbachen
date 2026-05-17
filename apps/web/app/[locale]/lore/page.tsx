@@ -2,7 +2,7 @@ import { loreApi } from "@/lib/api-client";
 import { LoreCard } from "@/components/lore/lore-card";
 import { LoreAtmosphere } from "@/components/lore/lore-atmosphere";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 import { getTranslations } from "next-intl/server";
 
 type Props = { params: Promise<{ locale: string }> };

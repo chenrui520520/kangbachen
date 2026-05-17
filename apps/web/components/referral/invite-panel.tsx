@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Input, Skeleton, toast } from "@kangba/ui";
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Input, Skeleton, toast } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useReferralBind, useReferralMe } from "@/hooks/use-referral";
 import { ApiClientError } from "@/lib/api-client";

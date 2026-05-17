@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-import kangbaPreset from "../../packages/ui/tailwind-preset";
+import kenbaPreset from "../../packages/ui/tailwind-preset";
 
 const config = {
-  presets: [kangbaPreset],
+  presets: [kenbaPreset],
   darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",

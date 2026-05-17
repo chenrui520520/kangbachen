@@ -23,16 +23,20 @@ async function sendMockEmail(email: string, code: string) {
     secure: false,
   });
   await transport.sendMail({
-    from: process.env.SMTP_FROM ?? "noreply@kangba.local",
+    from: process.env.SMTP_FROM ?? "noreply@kenba.local",
     to: email,
-    subject: "KangBa verification code",
-    text: `Your KangBa verification code is: ${code}`,
+    subject: "KENBA verification code",
+    text: `Your KENBA verification code is: ${code}`,
   });
 }
 
 export const emailAuthService = {
   async requestCode(email: string) {
-    const ttlMinutes = loadEnv().EMAIL_CODE_TTL_MINUTES;
+    const env = loadEnv();
+    if (env.NODE_ENV === "production" && env.MOCK_SMTP) {
+      throw badRequest("Email login is not available; configure SMTP for production");
+    }
+    const ttlMinutes = env.EMAIL_CODE_TTL_MINUTES;
     const code = generateCode();
     const expiresAt = new Date(Date.now() + ttlMinutes * 60 * 1000);
 
@@ -45,7 +49,7 @@ export const emailAuthService = {
     return {
       email,
       expiresAt: expiresAt.toISOString(),
-      message: loadEnv().MOCK_SMTP
+      message: env.MOCK_SMTP
         ? "Verification code sent (check server logs in development)"
         : "Verification code sent",
     };

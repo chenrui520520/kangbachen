@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 type Props = {
   className?: string;

@@ -12,7 +12,8 @@
     "prisma:migrate:dev": "dotenv -e ../.env -- prisma migrate dev",
     "prisma:push": "dotenv -e ../.env -- prisma db push",
     "db:seed": "dotenv -e ../.env -- tsx prisma/seed.ts",
-    "lint": "tsc -p tsconfig.json"
+    "lint": "tsc -p tsconfig.json",
+    "test": "node --import tsx --test tests/**/*.test.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",

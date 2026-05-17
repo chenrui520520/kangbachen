@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { ReferralBindResult, ReferralMe } from "@kangba/types";
+import type { ReferralBindResult, ReferralMe } from "@kenba/types";
 import { referralApi } from "@/lib/api-client";
 import { useAuthStore } from "@/lib/stores/auth-store";
 

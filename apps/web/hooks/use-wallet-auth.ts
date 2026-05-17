@@ -2,8 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { useAccount, useChainId, useDisconnect, useSignMessage } from "wagmi";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { toast } from "@kangba/ui";
+import { toast } from "@kenba/ui";
 import { authApi } from "@/lib/api-client";
 import { useAuthStore } from "@/lib/stores/auth-store";
 
@@ -11,7 +10,6 @@ export function useWalletAuth() {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const { signMessageAsync } = useSignMessage();
-  const { openConnectModal } = useConnectModal();
   const { disconnect } = useDisconnect();
   const setSession = useAuthStore((s) => s.setSession);
   const clearSession = useAuthStore((s) => s.clearSession);
@@ -21,8 +19,7 @@ export function useWalletAuth() {
 
   const signInWithWallet = useCallback(async () => {
     if (!isConnected || !address) {
-      openConnectModal?.();
-      return;
+      throw new Error("WALLET_NOT_CONNECTED");
     }
     setPending(true);
     try {
@@ -38,7 +35,7 @@ export function useWalletAuth() {
     } finally {
       setPending(false);
     }
-  }, [address, chainId, isConnected, openConnectModal, setSession, signMessageAsync]);
+  }, [address, chainId, isConnected, setSession, signMessageAsync]);
 
   const signOut = useCallback(async () => {
     try {
@@ -59,6 +56,5 @@ export function useWalletAuth() {
     pending,
     signInWithWallet,
     signOut,
-    openConnectModal,
   };
 }

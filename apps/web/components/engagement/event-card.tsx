@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import type { EventItem } from "@kangba/types";
-import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@kangba/ui";
+import type { EventItem } from "@kenba/types";
+import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@kenba/ui";
 import { useLocale, useTranslations } from "next-intl";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 function formatCountdown(ms: number): string {
   if (ms <= 0) return "0:00:00";

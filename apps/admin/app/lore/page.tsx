@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
-import { Button, Input, Label, toast } from "@kangba/ui";
+import { Button, Input, Label, toast } from "@kenba/ui";
 import { BodyTextField } from "@/components/body-text-field";
 import { ImageUploadField } from "@/components/image-upload-field";
 import { resolveMediaUrl } from "@/lib/media-url";
 import { zh } from "@/lib/zh";
 
-type Tab = "factions" | "characters";
+type Tab = "factions" | "characters" | "timeline";
 
 export default function LoreAdminPage() {
   const [tab, setTab] = useState<Tab>("factions");
   const [factions, setFactions] = useState<Array<Record<string, unknown>>>([]);
   const [characters, setCharacters] = useState<Array<Record<string, unknown>>>([]);
+  const [timeline, setTimeline] = useState<Array<Record<string, unknown>>>([]);
 
   const [factionForm, setFactionForm] = useState({
     id: "" as string | undefined,
@@ -25,6 +26,17 @@ export default function LoreAdminPage() {
     imageUrl: "",
     published: true,
     colorTheme: "violet",
+  });
+
+  const [timelineForm, setTimelineForm] = useState({
+    id: "" as string | undefined,
+    slug: "",
+    locale: "en",
+    title: "",
+    body: "",
+    era: "",
+    yearLabel: "",
+    published: true,
   });
 
   const [characterForm, setCharacterForm] = useState({
@@ -43,6 +55,7 @@ export default function LoreAdminPage() {
   const load = () => {
     void adminApi.loreFactions().then((rows) => setFactions(rows as Array<Record<string, unknown>>));
     void adminApi.loreCharacters().then((rows) => setCharacters(rows as Array<Record<string, unknown>>));
+    void adminApi.loreTimeline().then((rows) => setTimeline(rows as Array<Record<string, unknown>>));
   };
 
   useEffect(() => {
@@ -113,6 +126,9 @@ export default function LoreAdminPage() {
         <Button variant={tab === "characters" ? "secondary" : "outline"} size="sm" onClick={() => setTab("characters")}>
           角色
         </Button>
+        <Button variant={tab === "timeline" ? "secondary" : "outline"} size="sm" onClick={() => setTab("timeline")}>
+          时间线
+        </Button>
       </div>
 
       {tab === "factions" && (
@@ -167,6 +183,61 @@ export default function LoreAdminPage() {
               ))}
             </ul>
           </div>
+        </div>
+      )}
+
+      {tab === "timeline" && (
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="space-y-3 rounded-lg border border-border p-4">
+            <Label>{zh.common.locale}</Label>
+            <Input value={timelineForm.locale} onChange={(e) => setTimelineForm({ ...timelineForm, locale: e.target.value })} />
+            <Label>{zh.common.slug}</Label>
+            <Input value={timelineForm.slug} onChange={(e) => setTimelineForm({ ...timelineForm, slug: e.target.value })} />
+            <Label>{zh.common.title}</Label>
+            <Input value={timelineForm.title} onChange={(e) => setTimelineForm({ ...timelineForm, title: e.target.value })} />
+            <Label>纪元</Label>
+            <Input value={timelineForm.era} onChange={(e) => setTimelineForm({ ...timelineForm, era: e.target.value })} />
+            <Label>年份标签</Label>
+            <Input value={timelineForm.yearLabel} onChange={(e) => setTimelineForm({ ...timelineForm, yearLabel: e.target.value })} />
+            <BodyTextField value={timelineForm.body} onChange={(body) => setTimelineForm({ ...timelineForm, body })} />
+            <Button
+              onClick={() =>
+                void adminApi
+                  .saveLoreTimeline({ ...timelineForm, id: timelineForm.id || undefined, body: timelineForm.body || timelineForm.title })
+                  .then(() => {
+                    toast.success("时间线已保存");
+                    load();
+                  })
+                  .catch((e) => toast.error(e instanceof Error ? e.message : "保存失败"))
+              }
+            >
+              保存时间线
+            </Button>
+          </div>
+          <ul className="space-y-2 text-sm">
+            {timeline.map((t) => (
+              <li key={String(t.id)}>
+                <button
+                  type="button"
+                  className="w-full rounded border border-border px-3 py-2 text-left"
+                  onClick={() =>
+                    setTimelineForm({
+                      id: String(t.id),
+                      slug: String(t.slug),
+                      locale: String(t.locale),
+                      title: String(t.title),
+                      body: String(t.body ?? ""),
+                      era: String(t.era ?? ""),
+                      yearLabel: String(t.yearLabel ?? ""),
+                      published: Boolean(t.published),
+                    })
+                  }
+                >
+                  {String(t.title)} ({String(t.locale)})
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

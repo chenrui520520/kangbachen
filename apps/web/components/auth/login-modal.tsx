@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 import {
   Button,
   Dialog,
@@ -9,15 +11,18 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  Input,
-  Label,
   Separator,
   toast,
-} from "@kangba/ui";
+} from "@kenba/ui";
 import { useTranslations } from "next-intl";
-import { useWalletAuth } from "@/hooks/use-wallet-auth";
-import { authApi, ApiClientError } from "@/lib/api-client";
-import { useAuthStore } from "@/lib/stores/auth-store";
+import { WalletLoginSection } from "@/components/auth/wallet-login-section";
+import { authApi } from "@/lib/api-client";
+
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "http://127.0.0.1:4000";
+
+const enableTwitter = process.env.NEXT_PUBLIC_ENABLE_TWITTER_LOGIN !== "false";
+const enableEmail = process.env.NEXT_PUBLIC_ENABLE_EMAIL_LOGIN !== "false";
 
 type LoginModalProps = {
   open: boolean;
@@ -26,65 +31,38 @@ type LoginModalProps = {
 
 export function LoginModal({ open, onOpenChange }: LoginModalProps) {
   const t = useTranslations("auth");
-  const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
-  const [emailStep, setEmailStep] = useState<"request" | "verify">("request");
-  const [emailPending, setEmailPending] = useState(false);
-  const { signInWithWallet, pending: walletPending, openConnectModal, isConnected } = useWalletAuth();
-  const setSession = useAuthStore((s) => s.setSession);
+  const locale = useLocale();
+  const pathname = usePathname();
+  const [providers, setProviders] = useState<{ google: boolean; twitter: boolean } | null>(null);
 
-  async function handleWallet() {
-    try {
-      if (!isConnected) {
-        openConnectModal?.();
-        return;
-      }
-      await signInWithWallet();
-      onOpenChange(false);
-    } catch {
-      // toast handled in hook
-    }
+  useEffect(() => {
+    if (!open) return;
+    void authApi
+      .providers()
+      .then(setProviders)
+      .catch(() => setProviders({ google: false, twitter: false }));
+  }, [open]);
+
+  function startOAuth(provider: "google" | "twitter") {
+    const returnTo = pathname || `/${locale}`;
+    sessionStorage.setItem("KENBA-oauth-return", returnTo);
+    window.location.href = `${API_BASE}/api/login/${provider}?returnTo=${encodeURIComponent(returnTo)}`;
   }
 
-  async function handleEmailRequest(e: React.FormEvent) {
-    e.preventDefault();
-    setEmailPending(true);
-    try {
-      await authApi.emailRequest(email);
-      setEmailStep("verify");
-      toast.success(t("emailCodeSent"));
-    } catch (err) {
-      toast.error(err instanceof ApiClientError ? err.message : t("emailError"));
-    } finally {
-      setEmailPending(false);
+  function handleEmailLogin() {
+    if (!providers?.google) {
+      toast.error(t("emailNotConfigured"));
+      return;
     }
+    startOAuth("google");
   }
 
-  async function handleEmailVerify(e: React.FormEvent) {
-    e.preventDefault();
-    setEmailPending(true);
-    try {
-      const session = await authApi.emailVerify(email, code);
-      setSession(session);
-      toast.success(t("signedIn"));
-      onOpenChange(false);
-    } catch (err) {
-      toast.error(err instanceof ApiClientError ? err.message : t("emailError"));
-    } finally {
-      setEmailPending(false);
+  function handleTwitterLogin() {
+    if (!providers?.twitter) {
+      toast.error(t("twitterNotConfigured"));
+      return;
     }
-  }
-
-  async function handleTwitter() {
-    try {
-      await authApi.twitterPlaceholder();
-    } catch (err) {
-      if (err instanceof ApiClientError && err.status === 501) {
-        toast.info(t("twitterPlaceholder"));
-      } else {
-        toast.error(t("twitterError"));
-      }
-    }
+    startOAuth("twitter");
   }
 
   return (
@@ -97,7 +75,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
 
         <AnimatePresence mode="wait">
           <motion.div
-            key="wallet"
+            key="login"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="space-y-4"
@@ -105,81 +83,45 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
             <section className="rounded-lg border border-primary/20 bg-background/40 p-4 shadow-[0_0_24px_-8px_hsl(var(--primary)/0.4)]">
               <h3 className="mb-2 text-sm font-medium text-primary">{t("walletSection")}</h3>
               <p className="mb-3 text-xs text-muted-foreground">{t("walletHint")}</p>
-              <Button
-                className="w-full shadow-[0_0_20px_-6px_hsl(var(--primary)/0.6)]"
-                onClick={() => void handleWallet()}
-                disabled={walletPending}
-              >
-                {walletPending ? t("signing") : isConnected ? t("signWithWallet") : t("connectWallet")}
-              </Button>
+              <WalletLoginSection onSuccess={() => onOpenChange(false)} />
             </section>
 
-            <Separator />
-
-            <section className="rounded-lg border border-border/60 bg-background/30 p-4">
-              <h3 className="mb-2 text-sm font-medium">{t("emailSection")}</h3>
-              {emailStep === "request" ? (
-                <form onSubmit={(e) => void handleEmailRequest(e)} className="space-y-3">
-                  <motion.div layout>
-                    <Label htmlFor="auth-email">{t("emailLabel")}</Label>
-                    <Input
-                      id="auth-email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@example.com"
-                      required
-                      className="mt-1"
-                    />
-                  </motion.div>
-                  <Button type="submit" variant="secondary" className="w-full" disabled={emailPending}>
-                    {emailPending ? t("sending") : t("sendCode")}
-                  </Button>
-                </form>
-              ) : (
-                <form onSubmit={(e) => void handleEmailVerify(e)} className="space-y-3">
-                  <div>
-                    <Label htmlFor="auth-code">{t("codeLabel")}</Label>
-                    <Input
-                      id="auth-code"
-                      inputMode="numeric"
-                      maxLength={6}
-                      value={code}
-                      onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                      placeholder="000000"
-                      required
-                      className="mt-1 font-mono tracking-widest"
-                    />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={emailPending || code.length !== 6}>
-                    {emailPending ? t("verifying") : t("verifyCode")}
-                  </Button>
+            {enableEmail ? (
+              <>
+                <Separator />
+                <section className="rounded-lg border border-border/60 bg-background/30 p-4">
+                  <h3 className="mb-2 text-sm font-medium">{t("emailSection")}</h3>
+                  <p className="mb-3 text-xs text-muted-foreground">{t("emailHint")}</p>
                   <Button
                     type="button"
-                    variant="ghost"
-                    size="sm"
+                    variant="secondary"
                     className="w-full"
-                    onClick={() => setEmailStep("request")}
+                    onClick={handleEmailLogin}
+                    disabled={providers !== null && !providers.google}
                   >
-                    {t("changeEmail")}
+                    {t("emailSignIn")}
                   </Button>
-                </form>
-              )}
-            </section>
+                </section>
+              </>
+            ) : null}
 
-            <Separator />
-
-            <section>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full border-border/80"
-                onClick={() => void handleTwitter()}
-              >
-                {t("twitterSignIn")}
-              </Button>
-              <p className="mt-2 text-center text-xs text-muted-foreground">{t("twitterHint")}</p>
-            </section>
+            {enableTwitter ? (
+              <>
+                <Separator />
+                <section>
+                  <p className="mb-2 text-xs text-muted-foreground">{t("twitterHint")}</p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full border-border/80"
+                    onClick={handleTwitterLogin}
+                    disabled={providers !== null && !providers.twitter}
+                  >
+                    {t("twitterSignIn")}
+                  </Button>
+                </section>
+              </>
+            ) : null}
           </motion.div>
         </AnimatePresence>
       </DialogContent>

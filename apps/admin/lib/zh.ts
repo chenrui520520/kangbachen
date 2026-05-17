@@ -2,8 +2,8 @@ import type { MediaCategory } from "./admin-api";
 
 /** 后台界面中文文案 */
 export const zh = {
-  appTitle: "康巴后台",
-  brand: "KANGBA",
+  appTitle: "KENBA 后台",
+  brand: "KENBA",
 
   nav: {
     dashboard: "仪表盘",
@@ -23,6 +23,10 @@ export const zh = {
     exports: "数据导出",
     audit: "审计日志",
     system: "系统状态",
+    settings: "账号设置",
+    tasks: "任务",
+    nfts: "NFT 奖励",
+    signin: "签到奖励",
   },
 
   common: {

@@ -28,7 +28,7 @@ export function LoadingScreen() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <p className="text-xs uppercase tracking-[0.5em] text-primary">KangBa</p>
+        <p className="text-xs uppercase tracking-[0.5em] text-primary">KENBA</p>
         <motion.div
           className="mx-auto mt-4 h-1 w-32 overflow-hidden rounded-full bg-muted"
           initial={{ opacity: 0 }}

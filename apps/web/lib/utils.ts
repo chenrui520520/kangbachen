@@ -1,1 +1,1 @@
-export { cn } from "@kangba/utils";
+export { cn } from "@kenba/utils";

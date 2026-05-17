@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Button, Card, CardContent, CardHeader, CardTitle, Label, toast } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, Label, toast } from "@kenba/ui";
 import { adminApi, type MediaAsset, type MediaCategory } from "@/lib/admin-api";
 import { resolveMediaUrl } from "@/lib/media-url";
 import { Copy, Loader2, Upload } from "lucide-react";

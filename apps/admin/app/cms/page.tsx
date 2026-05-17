@@ -1,13 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label, toast } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label, toast } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 import { BodyTextField } from "@/components/body-text-field";
 import { ImageUploadField } from "@/components/image-upload-field";
 import { zh } from "@/lib/zh";
 
-type Tab = "pages" | "posts" | "banners";
+type Tab = "pages" | "posts" | "banners" | "faq" | "announcements";
+
+type FaqRow = {
+  id?: string;
+  locale: string;
+  question: string;
+  answer: string;
+  sortOrder: number;
+  published: boolean;
+};
+
+type AnnouncementRow = {
+  id?: string;
+  locale: string;
+  message: string;
+  linkUrl?: string;
+  active: boolean;
+};
 
 type PageRow = {
   id?: string;
@@ -36,6 +53,8 @@ export default function AdminCmsPage() {
   const [pages, setPages] = useState<PageRow[]>([]);
   const [posts, setPosts] = useState<PostRow[]>([]);
   const [banners, setBanners] = useState<BannerRow[]>([]);
+  const [faqs, setFaqs] = useState<FaqRow[]>([]);
+  const [announcements, setAnnouncements] = useState<AnnouncementRow[]>([]);
 
   const [pageForm, setPageForm] = useState<PageRow>({
     slug: "about",
@@ -65,10 +84,27 @@ export default function AdminCmsPage() {
     active: true,
   });
 
+  const [faqForm, setFaqForm] = useState<FaqRow>({
+    locale: "en",
+    question: "",
+    answer: "",
+    sortOrder: 0,
+    published: true,
+  });
+
+  const [announcementForm, setAnnouncementForm] = useState<AnnouncementRow>({
+    locale: "en",
+    message: "",
+    linkUrl: "",
+    active: true,
+  });
+
   useEffect(() => {
     void adminApi.cmsPages().then((rows) => setPages(rows as PageRow[]));
     void adminApi.cmsPosts().then((rows) => setPosts(rows as PostRow[]));
     void adminApi.cmsBanners().then((rows) => setBanners(rows as BannerRow[]));
+    void adminApi.cmsFaqs().then((rows) => setFaqs(rows as FaqRow[]));
+    void adminApi.cmsAnnouncements().then((rows) => setAnnouncements(rows as AnnouncementRow[]));
   }, []);
 
   function pickPage(row: PageRow) {
@@ -116,6 +152,26 @@ export default function AdminCmsPage() {
     }
   }
 
+  async function saveFaq() {
+    try {
+      await adminApi.saveFaq(faqForm);
+      toast.success("FAQ 已保存");
+      setFaqs((await adminApi.cmsFaqs()) as FaqRow[]);
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "保存失败");
+    }
+  }
+
+  async function saveAnnouncement() {
+    try {
+      await adminApi.saveAnnouncement(announcementForm);
+      toast.success("公告已保存");
+      setAnnouncements((await adminApi.cmsAnnouncements()) as AnnouncementRow[]);
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "保存失败");
+    }
+  }
+
   return (
     <div className="space-y-6">
       <h1 className="text-2xl font-semibold">{zh.nav.cms}</h1>
@@ -127,6 +183,8 @@ export default function AdminCmsPage() {
             ["pages", "页面"],
             ["posts", "文章"],
             ["banners", "横幅"],
+            ["faq", "FAQ"],
+            ["announcements", "公告"],
           ] as const
         ).map(([id, label]) => (
           <Button key={id} variant={tab === id ? "secondary" : "outline"} size="sm" onClick={() => setTab(id)}>
@@ -272,6 +330,61 @@ export default function AdminCmsPage() {
                 <li key={b.id ?? `${b.title}-${b.locale}`}>
                   <button type="button" className="underline-offset-2 hover:underline" onClick={() => pickBanner(b)}>
                     {b.title} ({b.locale}) {b.active ? "· 启用" : ""}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {tab === "faq" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>常见问题</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Label>{zh.common.locale}</Label>
+            <Input value={faqForm.locale} onChange={(e) => setFaqForm({ ...faqForm, locale: e.target.value })} />
+            <Label>问题</Label>
+            <Input value={faqForm.question} onChange={(e) => setFaqForm({ ...faqForm, question: e.target.value })} />
+            <BodyTextField label="回答" value={faqForm.answer} onChange={(answer) => setFaqForm({ ...faqForm, answer })} />
+            <Button onClick={() => void saveFaq()}>保存 FAQ</Button>
+            <ul className="space-y-1 text-sm">
+              {faqs.map((f) => (
+                <li key={f.id ?? f.question}>
+                  <button type="button" className="hover:underline" onClick={() => setFaqForm({ ...f })}>
+                    {f.question} ({f.locale})
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {tab === "announcements" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>站点公告</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Label>{zh.common.locale}</Label>
+            <Input value={announcementForm.locale} onChange={(e) => setAnnouncementForm({ ...announcementForm, locale: e.target.value })} />
+            <Label>公告内容</Label>
+            <Input value={announcementForm.message} onChange={(e) => setAnnouncementForm({ ...announcementForm, message: e.target.value })} />
+            <Label>链接（可选）</Label>
+            <Input value={announcementForm.linkUrl ?? ""} onChange={(e) => setAnnouncementForm({ ...announcementForm, linkUrl: e.target.value })} />
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" checked={announcementForm.active} onChange={(e) => setAnnouncementForm({ ...announcementForm, active: e.target.checked })} />
+              {zh.common.active}
+            </label>
+            <Button onClick={() => void saveAnnouncement()}>保存公告</Button>
+            <ul className="space-y-1 text-sm">
+              {announcements.map((a) => (
+                <li key={a.id ?? a.message}>
+                  <button type="button" className="hover:underline" onClick={() => setAnnouncementForm({ ...a })}>
+                    {a.message} ({a.locale})
                   </button>
                 </li>
               ))}

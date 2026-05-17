@@ -6,7 +6,7 @@ import { badRequest } from "../errors/http-error.js";
 function buildSignMessage(address: string, nonce: string, chainId: number) {
   const issuedAt = new Date().toISOString();
   return [
-    "KangBa wants you to sign in with your Ethereum account:",
+    "KENBA wants you to sign in with your Ethereum account:",
     address,
     "",
     `Chain ID: ${chainId}`,

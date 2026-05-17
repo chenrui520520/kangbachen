@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 export function GlowCard({
   children,

@@ -1,4 +1,5 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
+import { adminChangePasswordSchema } from "../schemas/admin-content.js";
 import { adminLoginSchema } from "../schemas/cms.js";
 import { adminAuthService } from "../services/admin-auth.service.js";
 import { sendSuccess } from "../utils/response.js";
@@ -19,5 +20,11 @@ export const adminAuthController = {
       email: req.adminAuth!.email,
       role: req.adminAuth!.role,
     });
+  },
+
+  changePassword: async (req: FastifyRequest, reply: FastifyReply) => {
+    const body = adminChangePasswordSchema.parse(req.body);
+    await adminAuthService.changePassword(req.adminAuth!.sub, body.currentPassword, body.newPassword);
+    return sendSuccess(reply, 200, { ok: true });
   },
 };

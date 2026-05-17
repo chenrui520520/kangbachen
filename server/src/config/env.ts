@@ -11,7 +11,7 @@ const envSchema = z.object({
       message: "DATABASE_URL must be a postgres connection string",
     }),
   REDIS_URL: z.string().default("redis://127.0.0.1:6379"),
-  JWT_SECRET: z.string().min(1, "JWT_SECRET is required"),
+  JWT_SECRET: z.string().min(16, "JWT_SECRET is required"),
   JWT_ACCESS_EXPIRES_IN: z.string().default("15m"),
   JWT_REFRESH_EXPIRES_IN: z.string().default("7d"),
   AUTH_NONCE_TTL_MINUTES: z.coerce.number().int().positive().default(5),

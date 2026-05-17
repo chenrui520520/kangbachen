@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 import { Link } from "@/i18n/navigation";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 

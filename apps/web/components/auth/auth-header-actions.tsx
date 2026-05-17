@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@kangba/ui";
+import { Button } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useIsAuthenticated } from "@/lib/stores/auth-store";
 import { LoginModal } from "./login-modal";

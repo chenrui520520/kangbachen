@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { Button, Input, Label, toast } from "@kangba/ui";
+import { Button, Input, Label, toast } from "@kenba/ui";
 import { adminApi, type MediaCategory } from "@/lib/admin-api";
 import { resolveMediaUrl } from "@/lib/media-url";
 import { ImageIcon, Loader2, Upload, X } from "lucide-react";

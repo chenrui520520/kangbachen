@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Badge, Card, CardContent, CardHeader, CardTitle, Skeleton, Tabs, TabsList, TabsTrigger } from "@kangba/ui";
+import { Badge, Card, CardContent, CardHeader, CardTitle, Skeleton, Tabs, TabsList, TabsTrigger } from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useLeaderboard } from "@/hooks/use-engagement";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 const types = ["points", "streak", "nft"] as const;
 

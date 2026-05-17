@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@kangba/ui";
+} from "@kenba/ui";
 import { useTranslations } from "next-intl";
 import { useRewards, useSignInHistory } from "@/hooks/use-engagement";
 import { SignInPanel } from "./signin-panel";

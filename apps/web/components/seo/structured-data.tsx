@@ -2,7 +2,7 @@ export function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "KangBa",
+    name: "KENBA",
     applicationCategory: "GameApplication",
     operatingSystem: "Web",
     description:

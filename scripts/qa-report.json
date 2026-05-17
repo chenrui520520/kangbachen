@@ -1,4 +1,4 @@
-﻿{
+{
     "timestamp":  "2026-05-16T10:48:14.8963700Z",
     "environment":  {
                         "api":  "http://127.0.0.1:4000",
@@ -7,7 +7,7 @@
                     },
     "qaExitCode":  0,
     "user":  {
-                 "email":  "poweruser@kangba.local",
+                 "email":  "poweruser@KENBA.local",
                  "id":  "cmp87rq58000inht0rhnl59w7",
                  "points":  1305
              },

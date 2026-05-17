@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@kangba/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@kenba/ui";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 export function DashboardCharts({ stats }: { stats: Record<string, unknown> }) {

@@ -1,8 +1,8 @@
 "use client";
 
-import type { NftSummary } from "@kangba/types";
-import { Badge, Card, CardContent, CardHeader, CardTitle } from "@kangba/ui";
-import { cn } from "@kangba/ui";
+import type { NftSummary } from "@kenba/types";
+import { Badge, Card, CardContent, CardHeader, CardTitle } from "@kenba/ui";
+import { cn } from "@kenba/ui";
 
 const rarityGlow: Record<string, string> = {
   common: "shadow-[0_0_16px_-4px_hsl(var(--muted-foreground)/0.4)]",

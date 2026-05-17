@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button, Separator } from "@kangba/ui";
+import { usePathname, useRouter } from "next/navigation";
+import { Button, Separator } from "@kenba/ui";
+import { adminAuthStore } from "@/lib/admin-auth-store";
 import { zh } from "@/lib/zh";
 
 const links = [
@@ -19,13 +20,18 @@ const links = [
   { href: "/events", label: zh.nav.events },
   { href: "/community", label: zh.nav.community },
   { href: "/rewards", label: zh.nav.rewards },
+  { href: "/signin", label: zh.nav.signin },
+  { href: "/tasks", label: zh.nav.tasks },
+  { href: "/nfts", label: zh.nav.nfts },
   { href: "/shop", label: zh.nav.shop },
   { href: "/exports", label: zh.nav.exports },
   { href: "/audit", label: zh.nav.audit },
   { href: "/system", label: zh.nav.system },
+  { href: "/settings", label: zh.nav.settings },
 ] as const;
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const pathname = usePathname();
   const isLogin = pathname === "/login" || pathname?.endsWith("/login");
 
@@ -51,6 +57,18 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                 );
               })}
             </nav>
+            <Separator className="my-4" />
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                adminAuthStore.clear();
+                router.push("/login");
+              }}
+            >
+              退出登录
+            </Button>
           </div>
         </aside>
         <main className="min-w-0 p-6 lg:p-10">{children}</main>

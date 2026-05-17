@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo } from "react";
 import { usePathname } from "@/i18n/navigation";
 import { analyticsApi } from "@/lib/api-client";
 
-const SESSION_KEY = "kangba_sid";
+const SESSION_KEY = "KENBA_sid";
 
 function getSessionId() {
   if (typeof window === "undefined") return undefined;

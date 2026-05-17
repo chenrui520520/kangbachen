@@ -1,4 +1,4 @@
-const TOKEN_KEY = "kangba_admin_token";
+const TOKEN_KEY = "KENBA_admin_token";
 
 export const adminAuthStore = {
   getToken() {

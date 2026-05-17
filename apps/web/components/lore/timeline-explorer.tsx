@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { markdownToHtml } from "@/lib/markdown";
-import { cn } from "@kangba/ui";
+import { cn } from "@kenba/ui";
 
 export type TimelineEvent = {
   id: string;

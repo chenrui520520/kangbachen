@@ -8,17 +8,16 @@
     "leaderboard": "ランキング",
     "events": "イベント",
     "shop": "ショップ",
-    "litepaper": "ライトペーパー",
     "invite": "招待"
   },
   "home": {
-    "title": "KangBa の領域へ",
+    "title": "KENBA の領域へ",
     "subtitle": "クエスト、報酬、オンチェーンアイデンティティのためのダークファンタジーWeb3ハブ。",
     "cta_docs": "ロードマップを読む"
   },
   "auth": {
-    "title": "KangBa にサインイン",
-    "subtitle": "ウォレット、メール、または X ログイン（準備中）。",
+    "title": "KENBA にサインイン",
+    "subtitle": "ウォレット、または Google（メール）/ X でワンクリック認証。",
     "signIn": "サインイン",
     "signOut": "サインアウト",
     "signedIn": "サインインしました",
@@ -28,19 +27,14 @@
     "signWithWallet": "メッセージに署名して続行",
     "signing": "署名中…",
     "emailSection": "メール",
-    "emailLabel": "メールアドレス",
-    "sendCode": "認証コードを送信",
-    "sending": "送信中…",
-    "codeLabel": "6桁コード",
-    "verifyCode": "確認してサインイン",
-    "verifying": "確認中…",
-    "changeEmail": "別のメールを使用",
-    "emailCodeSent": "コードを送信しました（開発時はサーバーログを確認）",
-    "emailError": "メールログインに失敗しました",
+    "emailSignIn": "メールでワンクリック",
+    "emailHint": "Google 認証へ移動（認証コード不要）。",
+    "emailNotConfigured": "メールログイン未設定（GOOGLE_CLIENT_ID）",
     "twitterSignIn": "X で続行",
-    "twitterHint": "OAuth は近日公開 — プレースホルダー",
-    "twitterPlaceholder": "X / Twitter ログインはまだ利用できません",
-    "twitterError": "Twitter ログインは利用できません",
+    "twitterHint": "X 認証画面へ移動します。",
+    "twitterNotConfigured": "X ログイン未設定（TWITTER_CLIENT_ID）",
+    "oauthCompleting": "ログイン処理中…",
+    "oauthError": "認証に失敗しました",
     "pointsLabel": "{points} ポイント"
   },
   "engagement": {
@@ -115,12 +109,12 @@
   },
   "landing": {
     "meta": {
-      "title": "KangBa — Enter the Dark Fantasy Web3 Realm",
+      "title": "KENBA — Enter the Dark Fantasy Web3 Realm",
       "description": "A cinematic Web3 game hub: sign in daily, complete quests, collect mock NFTs, and climb the leaderboard."
     },
     "hero": {
       "badge": "静寂の時代 · ホロウキング",
-      "title": "KangBa",
+      "title": "KENBA",
       "subtitle": "禁断のソウル経済で動く死にゆくアンデッド文明 — 魂税を払い、証人を縛り、呪われし遺物を手に入れよ。",
       "ctaRewards": "ソウル・フラグメントを受け取る",
       "ctaLore": "ネクロポリスへ",
@@ -247,7 +241,7 @@
       "rewards": "Rewards",
       "invite": "Invite",
       "shop": "Shop",
-      "legal": "© KangBa. Mock experience — not financial advice."
+      "legal": "© KENBA. Mock experience — not financial advice."
     }
   },
   "referral": {

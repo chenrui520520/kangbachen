@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label, toast } from "@kangba/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label, toast } from "@kenba/ui";
 import { adminApi } from "@/lib/admin-api";
 import { adminAuthStore } from "@/lib/admin-auth-store";
 import { zh } from "@/lib/zh";
